@@ -15,7 +15,7 @@ namespace WebDemo.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View("Views/Font-end/Home/index.cshtml");
         }
 
         public IActionResult Privacy()
