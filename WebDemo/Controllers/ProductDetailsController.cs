@@ -2,7 +2,7 @@
 
 namespace WebDemo.Controllers
 {
-    public class ProductDetailController : Controller
+    public class ProductDetailsController : Controller
     {
         public IActionResult Index()
         {
