@@ -8,37 +8,49 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebDemo
 build_property.RootNamespace = WebDemo
-build_property.ProjectDir = D:\C#\Hutech\DuAn\WebDemo\WebDemo\
+build_property.ProjectDir = C:\Users\heaven\OneDrive\Documents\GitHub\Hutech_Web_Demo\WebDemo\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\C#\Hutech\DuAn\WebDemo\WebDemo
+build_property.MSBuildProjectDirectory = C:\Users\heaven\OneDrive\Documents\GitHub\Hutech_Web_Demo\WebDemo
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/WebDemo/Views/Home/Index.cshtml]
+[C:/Users/heaven/OneDrive/Documents/GitHub/Hutech_Web_Demo/WebDemo/Views/Cart/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxpbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/heaven/OneDrive/Documents/GitHub/Hutech_Web_Demo/WebDemo/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/WebDemo/Views/Order/Index.cshtml]
+[C:/Users/heaven/OneDrive/Documents/GitHub/Hutech_Web_Demo/WebDemo/Views/Order/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/WebDemo/Views/Shared/Error.cshtml]
+[C:/Users/heaven/OneDrive/Documents/GitHub/Hutech_Web_Demo/WebDemo/Views/Product Details/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdCBEZXRhaWxzXGluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/heaven/OneDrive/Documents/GitHub/Hutech_Web_Demo/WebDemo/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/WebDemo/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/heaven/OneDrive/Documents/GitHub/Hutech_Web_Demo/WebDemo/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/WebDemo/Views/_ViewImports.cshtml]
+[C:/Users/heaven/OneDrive/Documents/GitHub/Hutech_Web_Demo/WebDemo/Views/Shop/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/heaven/OneDrive/Documents/GitHub/Hutech_Web_Demo/WebDemo/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/WebDemo/Views/_ViewStart.cshtml]
+[C:/Users/heaven/OneDrive/Documents/GitHub/Hutech_Web_Demo/WebDemo/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/WebDemo/Views/Shared/_Layout.cshtml]
+[C:/Users/heaven/OneDrive/Documents/GitHub/Hutech_Web_Demo/WebDemo/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-vsxf1yj2zu
