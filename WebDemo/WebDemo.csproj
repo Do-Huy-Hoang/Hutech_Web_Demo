@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Component\**" />
+    <Content Remove="Views\Component\**" />
+    <EmbeddedResource Remove="Views\Component\**" />
+    <None Remove="Views\Component\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -20,9 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Component\" />
-    <Folder Include="wwwroot\lib\" />
     <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\js\back_end\" />
+    <Folder Include="wwwroot\lib\teamplate_font_end\" />
+    <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
 </Project>

@@ -1,40 +1,91 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var js = "";
+    if (ViewData["js"] != null)
+    {
+        js = ViewData["js"].ToString();
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link href="~/lib/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-    <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="~/lib/teamplate_back_end/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/lib/teamplate_back_end/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/lib/teamplate_back_end/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/teamplate_back_end/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="~/teamplate_back_end/css/skins/_all-skins.min.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="~/lib/teamplate_back_end/morris.js/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="~/lib/teamplate_back_end/jvectormap/jquery-jvectormap.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="~/lib/teamplate_back_end/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/lib/teamplate_back_end/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="~/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+      <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+   @await RenderSectionAsync("css", required: false)
 </head>
-<body id="page-top">
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-      
-     @Html.Partial("~/Views/Back-end/Component/SideBar.cshtml")
-     @RenderBody()
-     @Html.Partial("~/Views/Back-end/Component/Footer.cshtml");}  
-     </div>
-     <!-- Bootstrap core JavaScript-->
-    <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="~/lib/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="~/lib/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="~/lib/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="~/lib/demo/chart-area-demo.js"></script>
-    <script src="~/lib/demo/chart-pie-demo.js"></script>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+        @Html.Partial("~/Views/Back-end/Component/Header.cshtml")
+        @Html.Partial("~/Views/Back-end/Component/SideBar.cshtml")
+        @RenderBody()
+        @Html.Partial("~/Views/Back-end/Component/Footer.cshtml")}
+</div>
+    <!-- jQuery 3 -->
+    <script src="~/lib/teamplate_back_end/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/lib/teamplate_back_end/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="~/lib/teamplate_back_end/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Morris.js charts -->
+    <script src="~/lib/teamplate_back_end/raphael/raphael.min.js"></script>
+    <script src="~/lib/teamplate_back_end/morris.js/morris.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/lib/teamplate_back_end/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- jvectormap -->
+    <script src="~/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="~/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/lib/teamplate_back_end/jquery-knob/dist/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/lib/teamplate_back_end/moment/min/moment.min.js"></script>
+    <script src="~/lib/teamplate_back_end/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- datepicker -->
+    <script src="~/lib/teamplate_back_end/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="~/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <!-- Slimscroll -->
+    <script src="~/lib/teamplate_back_end/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/lib/teamplate_back_end/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/teamplate_back_endteamplate_back_end/js/adminlte.min.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/teamplate_back_endteamplate_back_end/js/pages/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/teamplate_back_end/js/demo.js"></script>
+    <script src="~/js/@js" asp-append-version="true"></script>
+    <!-- page script -->
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
