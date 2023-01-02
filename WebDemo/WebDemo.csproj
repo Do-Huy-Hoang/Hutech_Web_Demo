@@ -25,11 +25,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="toastr" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\img\" />
-    <Folder Include="wwwroot\js\back_end\" />
     <Folder Include="wwwroot\lib\teamplate_font_end\" />
     <Folder Include="wwwroot\css\" />
   </ItemGroup>

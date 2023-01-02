@@ -39,10 +39,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjay1FbmRcQ29tcG9uZW50XFNpZGVCYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Back-End/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjay1FbmRcU2hhcmVkXEVycm9yLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/C\#/Hutech/DuAn/WebDemo/Views/Back-End/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjay1FbmRcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -69,10 +65,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/C\#/Hutech/DuAn/WebDemo/Views/Font-end/ProductDetails/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9udC1lbmRcUHJvZHVjdERldGFpbHNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Font-end/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9udC1lbmRcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/C\#/Hutech/DuAn/WebDemo/Views/Font-end/Shared/_ValidationScriptsPartial.cshtml]

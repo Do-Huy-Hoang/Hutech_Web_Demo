@@ -1,0 +1,72 @@
+create database WebDemo
+go
+use WebDemo
+go
+create table Categories(
+	cate_id int identity primary key,
+	cate_name nvarchar(150) NOT NULL,
+	createAt datetime NULL,
+	updateAt datetime NULL
+)
+go
+create table Products(
+	pro_id int identity primary key,
+	pro_name nvarchar(150) NOT NULL,
+	pro_price nvarchar(150) NOT NULL,
+	pro_quantity int NOT NULL,
+	pro_description nvarchar(150) NOT NULL,
+	pro_img varchar(150) NOT NULL,
+	pro_Category int NOT NULL,
+	createAt datetime NULL,
+	updateAt datetime NULL
+)
+go
+create table Product_img(
+	proImg_id int identity primary key,
+	proImg_path varchar(150) NOT NULL,
+	proImg_Product int NOT NULL,
+	createAt datetime NULL
+) 
+go
+create table Users(
+	user_id int primary key,
+	user_name varchar(150) NOT NULL,
+	user_password varchar(150) NOT NULL,
+	user_email varchar(150)NOT NULL,
+	user_phoneNumber varchar(150) NULL,
+	user_address varchar(150) NULL,
+	isAdmin bit NOT NULL,
+	createAt datetime NULL,
+	updateAt datetime NULL
+)
+go
+create table Orders(
+	ord_id int primary key,
+	ord_userId int NOT NULL,
+	ord_name varchar(150) NOT NULL,
+	ord_email varchar(150)NOT NULL,
+	ord_phoneNumber varchar(150)NOT NULL,
+	ord_address varchar(150) NULL,
+	createAt datetime NULL,
+)
+go
+create table Order_detail(
+	ordDetail_id int identity primary key,
+	ordDetail_Order int NOT NULL,
+	ordDetail_Product int NOT NULL,
+	ordDetail_Quantity int NOT NULL,
+)
+go
+create table Roles(
+	role_id int identity primary key,
+	role_name varchar(150) NOT NULL,
+	role_user int NOT NULL,
+)
+go
+ALTER TABLE Products ADD CONSTRAINT fk_Product_Category_pro_Category FOREIGN KEY (pro_Category) REFERENCES Categories (cate_id);
+ALTER TABLE Product_img ADD CONSTRAINT fk_Product_img_Product_proImg_Product FOREIGN KEY (proImg_Product) REFERENCES Products (pro_id);
+ALTER TABLE Orders ADD CONSTRAINT fk_Order_User_ord_userId FOREIGN KEY (ord_userId) REFERENCES Users (user_id);
+ALTER TABLE Order_detail ADD CONSTRAINT fk_Order_detail_Product_ordDetail_Product FOREIGN KEY (ordDetail_Product) REFERENCES Products (pro_id);
+ALTER TABLE Order_detail ADD CONSTRAINT fk_Order_detail_Order_ordDetail_Order FOREIGN KEY (ordDetail_Order) REFERENCES Orders (ord_id);
+ALTER TABLE Roles ADD CONSTRAINT fk_Role_User_role_user FOREIGN KEY (role_user) REFERENCES Users (user_id);
+
