@@ -193,7 +193,7 @@ namespace WebDemo.Controllers.Back_End
             }
         }
 
-        [HttpPost]
+        [HttpDelete]
         public IActionResult delete_category(int cateId)
         {
             var message = deleteCategory(cateId);
