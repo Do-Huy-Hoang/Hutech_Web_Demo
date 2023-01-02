@@ -141,10 +141,9 @@ function save() {
 }
 
 function deleteAt(id) {
-    console.log(id);
     $("#btnDelete").click(function () {
         $.ajax({
-            type: "POST",
+            type: "DELETE",
             url: "/Categories/delete_category",
             data: { 'cateId': id },
             async: false,
