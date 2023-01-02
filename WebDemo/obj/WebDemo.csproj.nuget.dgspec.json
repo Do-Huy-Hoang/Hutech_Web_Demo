@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C#\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj": {}
+    "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj": {}
   },
   "projects": {
-    "D:\\C#\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj": {
+    "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C#\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj",
+        "projectUniqueName": "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj",
         "projectName": "WebDemo",
-        "projectPath": "D:\\C#\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj",
+        "projectPath": "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "D:\\C#\\Hutech\\DuAn\\WebDemo\\obj\\",
+        "outputPath": "D:\\Hutech\\DuAn\\WebDemo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

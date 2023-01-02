@@ -8,85 +8,85 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebDemo
 build_property.RootNamespace = WebDemo
-build_property.ProjectDir = D:\C#\Hutech\DuAn\WebDemo\
+build_property.ProjectDir = D:\Hutech\DuAn\WebDemo\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\C#\Hutech\DuAn\WebDemo
+build_property.MSBuildProjectDirectory = D:\Hutech\DuAn\WebDemo
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Back-End/AdminHome/Index.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Back-End/AdminHome/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjay1FbmRcQWRtaW5Ib21lXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Back-End/Category/Add.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Back-End/Category/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjay1FbmRcQ2F0ZWdvcnlcQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Back-End/Category/Index.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Back-End/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjay1FbmRcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Back-End/Component/Footer.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Back-End/Component/Footer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjay1FbmRcQ29tcG9uZW50XEZvb3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Back-End/Component/Header.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Back-End/Component/Header.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjay1FbmRcQ29tcG9uZW50XEhlYWRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Back-End/Component/SideBar.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Back-End/Component/SideBar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjay1FbmRcQ29tcG9uZW50XFNpZGVCYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Back-End/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Back-End/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjay1FbmRcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Back-End/_ViewImports.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Back-End/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjay1FbmRcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Back-End/_ViewStart.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Back-End/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjay1FbmRcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Font-end/Cart/index.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Font-end/Cart/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9udC1lbmRcQ2FydFxpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Font-end/Home/Index.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Font-end/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9udC1lbmRcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Font-end/Order/Index.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Font-end/Order/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9udC1lbmRcT3JkZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Font-end/ProductDetails/Index.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Font-end/ProductDetails/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9udC1lbmRcUHJvZHVjdERldGFpbHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Font-end/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Font-end/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9udC1lbmRcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Font-end/Shop/Index.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Font-end/Shop/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9udC1lbmRcU2hvcFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Font-end/_ViewImports.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Font-end/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9udC1lbmRcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Font-end/_ViewStart.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Font-end/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9udC1lbmRcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Back-End/Shared/_Layout.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Back-End/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFjay1FbmRcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ealiogbvn1
 
-[D:/C\#/Hutech/DuAn/WebDemo/Views/Font-end/Shared/_Layout.cshtml]
+[D:/Hutech/DuAn/WebDemo/Views/Font-end/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRm9udC1lbmRcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-umize2z9mh

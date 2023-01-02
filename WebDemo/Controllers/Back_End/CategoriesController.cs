@@ -197,11 +197,12 @@ namespace WebDemo.Controllers.Back_End
         public IActionResult delete_category(int cateId)
         {
             var message = deleteCategory(cateId);
-            if (message != null)
+            if (message!= null)
             {
                 var res = new
                 {
                     Success = true,
+                    Failed = false,
                     Message = "Delete Success",
                 };
                 return Json(res);
@@ -211,7 +212,8 @@ namespace WebDemo.Controllers.Back_End
                 var res = new
                 {
                     Success = false,
-                    Message = "Create Error"
+                    Failed = true,
+                    Message = "Delete Error"
                 };
                 return Json(res);
             }
@@ -228,7 +230,7 @@ namespace WebDemo.Controllers.Back_End
                     context.SaveChanges();
                     return new
                     {
-                        Message = "Success"
+                        Message = "Delete Success"
                     };
                 }
                 return null;

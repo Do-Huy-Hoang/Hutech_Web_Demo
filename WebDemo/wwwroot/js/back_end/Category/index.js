@@ -152,10 +152,11 @@ function deleteAt(id) {
                     toastr.success("", res.message);
                     getDataCategories(p);
                 }
-                else {
+                if (res.Failed) {
                     toastr.error("", res.message);
                     getDataCategories(p);
                 }
+                console.log(res.success)
             },
             failure: function (res) {
                 alert(res.message);

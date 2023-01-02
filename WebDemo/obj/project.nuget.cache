@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4SDin8ZGxOyWdH1CEiBU+SVfclC+jrI5+fAt0wzLR+5yDhZW5LGvOt/+wsFRjEqgUa42hDktpi58VqJB5desPA==",
+  "dgSpecHash": "K2ZxoESgxXPud3FX9EGjrYzQZL5TW2BXmJwTa0J4xhS8cq3+Zen//MqX0dvo4tZCbFsDPh8AnWow2/cnYObMxg==",
   "success": true,
-  "projectFilePath": "D:\\C#\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj",
+  "projectFilePath": "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asus\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
