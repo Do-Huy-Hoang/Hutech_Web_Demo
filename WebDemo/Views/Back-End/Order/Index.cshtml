@@ -1,0 +1,207 @@
+﻿@{
+    ViewData["Title"] = "Order Manager";
+    ViewData["css"] = "<link rel='stylesheet' href='~/lib/teamplate_back_end/datatables.net-bs/css/dataTables.bootstrap.min.css'>";
+    ViewData["js"] = "/js/back_end/Order/Index.js";
+}
+
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Orders</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Categories</li>
+                        <li class="breadcrumb-item active">Order</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="col-sm-12 row">
+                            <div class="card-header col-sm-9 col-md-10">
+                                <div class="input-group col-sm-10 float-sm-right">
+                                    <input type="text" class="form-control" name="orderName" placeholder="Search order">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" onclick="search()">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr class="col-sm-14">
+                                        <th class="col-sm-1">Order Id</th>
+                                        <th class="col-sm-2">Customer name</th>
+                                        <th class="col-sm-2">Email</th>
+                                        <th class="col-sm-2">Phone</th>
+                                        <th class="col-sm-2">Address</th>
+                                        <th class="col-sm-2">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyResult">
+                                </tbody>
+                            </table>
+                            <div id="pagination" style="padding-top: 10px">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end">
+                                        <li class="page-item">
+                                            <a class="page-link" href="javascript:void(0);" onclick="per()" id="Previous">Previous</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="javascript:void(0);">
+                                                <span id="curPage">1</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="javascript:void(0);" onclick="next()" id="Next">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div id="Spinner">
+                            <div class="d-flex justify-content-center">
+                                <div class="spinner-border" role="status"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script id="courseTemplate" type="text/x-jquery-tmpl">
+     <tr>
+      <td>${ordId}</td>
+      <td>${ordName}</td>
+      <td>${ordEmail}</td>
+      <td>${ordPhoneNumber}</td>
+      <td>${ordAddress}</td>
+      <td>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg" onclick="showInfoOrder(${ordId})">
+              Details
+          </button>
+          <button type="button" class="btn btn-danger" data-toggle="modal" onclick="deleteOrder(${ordId})" data-target="#modal-sm">
+              Delete
+          </button>
+      </td>
+    </tr>
+</script>
+
+<div class="modal fade" id="modal-lg">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Order Detail</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <div class="mb-3 row">
+                            <label for="txtOrdID" class="col-sm-2 col-form-label">OrderID</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control" id="txtOrdID" value="">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtProductID" class="col-sm-2 col-form-label">ProductID</label>
+                            <div class="col-sm-2">
+                                <input type="text" readonly class="form-control" id="txtProductID">
+                            </div>
+                            <label for="txtProductName" class="col-sm-2 col-form-label">Product Name</label>
+                            <div class="col-sm-4">
+                                <input type="text" readonly class="form-control" id="txtProductName">
+                            </div>
+                            <label for="txtQuality" class="col-sm-1 col-form-label">Quality</label>
+                            <div class="col-sm-1">
+                                <input type="text" readonly class="form-control" id="txtQuality">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="txtProductPrice" class="col-sm-2 col-form-label">Price</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control" id="txtProductPrice">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="txtUserID" class="col-sm-2 col-form-label">UserID</label>
+                            <div class="col-sm-3">
+                                <input type="text" readonly class="form-control" id="txtUserID">
+                            </div>
+                            <label for="txtUserName" class="col-sm-2 col-form-label">Customer</label>
+                            <div class="col-sm-5">
+                                <input type="text" readonly class="form-control" id="txtUserName">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="txtEmail" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control" id="txtEmail">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="txtPhone" class="col-sm-2 col-form-label">Phone</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control" id="txtPhone">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="txtAddress" class="col-sm-2 col-form-label">Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control" id="txtAddress">
+                            </div>
+                        </div>    
+                        <div class="mb-3 row">
+                            <label for="txtTotal" class="col-sm-2 col-form-label">Total</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control" id="txtTotal">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnClose"  type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-sm">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this category?</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

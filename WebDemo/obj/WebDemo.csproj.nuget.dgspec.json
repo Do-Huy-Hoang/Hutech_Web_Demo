@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj": {}
+    "C:\\Users\\Nguyen\\OneDrive\\Documents\\Code\\Hutech_Web_Demo\\WebDemo\\WebDemo.csproj": {}
   },
   "projects": {
-    "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj": {
+    "C:\\Users\\Nguyen\\OneDrive\\Documents\\Code\\Hutech_Web_Demo\\WebDemo\\WebDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj",
+        "projectUniqueName": "C:\\Users\\Nguyen\\OneDrive\\Documents\\Code\\Hutech_Web_Demo\\WebDemo\\WebDemo.csproj",
         "projectName": "WebDemo",
-        "projectPath": "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj",
-        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "D:\\Hutech\\DuAn\\WebDemo\\obj\\",
+        "projectPath": "C:\\Users\\Nguyen\\OneDrive\\Documents\\Code\\Hutech_Web_Demo\\WebDemo\\WebDemo.csproj",
+        "packagesPath": "C:\\Users\\Nguyen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nguyen\\OneDrive\\Documents\\Code\\Hutech_Web_Demo\\WebDemo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nguyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +44,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.20, )"
+            },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[5.0.1, )"
@@ -78,7 +83,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -90,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
