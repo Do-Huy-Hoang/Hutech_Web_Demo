@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    ViewData["js"] = "/js/font_end/Login/login.js";
+}
+
+<section class="login-block">
+    <div class="container login-back-group">
+        <div class="row">
+            <div class="col-md-4 login-sec" id="frmLogin">
+                <h2 class="text-center">Login Now</h2>
+                <div class="invalid-feedback text-center mess" id="message"></div>
+                <div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text ic" id="basic-addon1"><i class="fas fa-user fa-lg"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="lgUserName" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text ic" id="basic-addon1"><i class="fas fa-key fa-lg"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="lgPassword" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="col-sm-12 row">
+                        <div class="col-sm-9">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <div class="col-sm-3 float-sm-right">
+                            <button class="btn btn-login" onclick="btnLogin()">Login</button>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center links">
+                            Don't have an account?<a href="javascript:void(0);" onclick="goSign()">Sign Up</a>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <a href="#">Forgot your password?</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="copy-text">Created with <i class="fa fa-heart"></i> by Grafreez</div>
+            </div>
+
+            <div class="col-md-4 login-sec" id="frmSignUp">
+                <h2 class="text-center">Sign Up</h2>
+                <div class="invalid-feedback text-center mess" id="messagerg"></div>
+                <div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text ic" id="basic-addon1"><i class="fas fa-user fa-lg"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="rgUserName" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text ic" id="basic-addon1"><i class="fas fa-envelope fa-lg"></i></span>
+                        </div>
+                        <input type="email" class="form-control" name="rgEmail" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text ic" id="basic-addon1"><i class="fas fa-key fa-lg"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="rgPassword" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text ic" id="basic-addon1"><i class="fas fa-key fa-lg"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="rgConfirmPassword" placeholder="Confirm Password" aria-label="Confirm Password" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="col-sm-12 row ad">
+                        <button class="btn btn-login sig" onclick="btnRegister()">Sign Up</button>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center links">
+                            You have an account?<a href="javascript:void(0);" onclick="goLogin()">Login</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="copy-text">Created with <i class="fa fa-heart"></i> by Grafreez</div>
+            </div>
+
+            <div class="col-md-8 banner-sec">
+            </div>
+        </div>
+    </div>
+</section>

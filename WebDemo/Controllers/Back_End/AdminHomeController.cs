@@ -6,7 +6,14 @@ namespace WebDemo.Controllers.Back_End
     {
         public IActionResult Index()
         {
-            return View("Views/Back-end/AdminHome/index.cshtml");
+            if (HttpContext.Session.GetString("IsAdmin") != null && (HttpContext.Session.GetString("IsAdmin").Equals("True")))
+            {
+                return View("Views/Back-end/AdminHome/index.cshtml");
+            }
+            else
+            {
+                return Redirect("/404");
+            }
         }
     }
 }

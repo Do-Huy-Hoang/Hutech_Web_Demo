@@ -2,6 +2,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//Add Session
+builder.Services.AddSession(option =>
+{
+    option.Cookie.Name = "ITP_Shop.Session";
+    option.IdleTimeout = TimeSpan.FromHours(1);
+    option.Cookie.IsEssential = true;
+}); 
+
 
 var app = builder.Build();
 
@@ -19,7 +27,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.UseSession();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

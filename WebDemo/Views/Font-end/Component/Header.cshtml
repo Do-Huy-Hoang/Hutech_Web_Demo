@@ -1,0 +1,35 @@
+﻿<header class="header bg-white">
+    <div class="container px-lg-3">
+        <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
+            <a class="navbar-brand" href="index.html"><span class="fw-bold text-uppercase text-dark">Boutique</span></a>
+            <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " id="hHome" onclick="goHome()" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Link--><a class="nav-link" id="hShop" onclick="goShop()" asp-area="" asp-controller="Shop" asp-action="Index">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Link--><a class="nav-link" href="#">Product detail</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" id="hCart" onclick="goCart()" asp-area="" asp-controller="ShoppingCart" asp-action="Index"> <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small class="text-gray fw-normal">(2)</small></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!"> <i class="far fa-heart me-1"></i><small class="text-gray fw-normal"> (0)</small></a></li>
+                    <li class="nav-item" id="frLogin"><a class="nav-link" id="hLogin" onclick="goPageLogin()" asp-area="" asp-controller="Login" asp-action="Index"> <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
+                    <li class="nav-item dropdown" id="infomation">
+                        <a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                        <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown">
+                            <a class="dropdown-item border-0 transition-link" href="#"><i class="fas fa-id-card-alt"></i> Profile</a>
+                            <a class="dropdown-item border-0 transition-link" ><i class="fas fa-sticky-note" href="#!"></i> Orders</a>
+                            <a class="dropdown-item border-0 transition-link" id="isAdmin"  asp-area="" asp-controller="AdminHome" asp-action="Index"><i class="fas fa-user-shield"></i> Admin home</a>
+                            <a class="dropdown-item border-0 transition-link" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>

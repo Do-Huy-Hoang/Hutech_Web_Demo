@@ -18,6 +18,7 @@ namespace WebDemo.Controllers.Back_End
             return View("Views/Back-end/Category/Add.cshtml");
         }
 
+        #region get data
         [HttpGet]
         public IActionResult get_data_categories(int Page, int Size, string cateName)
         {
@@ -90,7 +91,9 @@ namespace WebDemo.Controllers.Back_End
                 throw;
             }
         }
+        #endregion
 
+        #region create
         [HttpPost]
         public IActionResult create_category(string cateName)
         {
@@ -136,7 +139,9 @@ namespace WebDemo.Controllers.Back_End
                 throw;
             }
         }
+        #endregion
 
+        #region update
         [HttpPost]
         public IActionResult update_category(Category category)
         {
@@ -193,6 +198,9 @@ namespace WebDemo.Controllers.Back_End
             }
         }
 
+        #endregion
+
+        #region delete
         [HttpDelete]
         public IActionResult delete_category(int cateId)
         {
@@ -240,5 +248,7 @@ namespace WebDemo.Controllers.Back_End
                 return null;
             }
         }
+
+        #endregion
     }
 }

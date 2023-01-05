@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var js = "";
+    if (ViewData["js"] != null)
+    {
+        js = ViewData["js"].ToString();
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -8,9 +16,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
-    <!-- gLightbox gallery-->
-    <link rel="stylesheet" href="~/lib/teamplate_font_end/teamplate_font_end/glightbox/css/glightbox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- gLightbox gallery-->
+    <link rel="stylesheet" href="~/lib/teamplate_font_end/glightbox/css/glightbox.min.css">
     <!-- Range slider-->
+    <link rel="stylesheet" href="~/lib/teamplate_font_end/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/lib/teamplate_font_end/nouislider/nouislider.min.css">
     <!-- Choices CSS-->
     <link rel="stylesheet" href="~/lib/teamplate_font_end/choices.js/public/assets/styles/choices.min.css">
@@ -22,44 +32,16 @@
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="~/teamplate_font_end/css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="~/teamplate_font_end/css/ustom.css">
+    <link rel="stylesheet" href="~/teamplate_font_end/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" href="~/css/font_end/login.css">
 </head>
 <body>
      <div class="page-holder">
         <!-- navbar-->
-        <header class="header bg-white">
-            <div class="container px-lg-3">
-                <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
-                    <a class="navbar-brand" href="index.html"><span class="fw-bold text-uppercase text-dark">Boutique</span></a>
-                    <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto">
-                            <li class="nav-item">
-                                <a class="nav-link active"  asp-area="" asp-controller="AdminHome" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <!-- Link--><a class="nav-link" href="shop.html">Shop</a>
-                            </li>
-                            <li class="nav-item">
-                                <!-- Link--><a class="nav-link" href="detail.html">Product detail</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                                <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link" href="cart.html"> <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small class="text-gray fw-normal">(2)</small></a></li>
-                            <li class="nav-item"><a class="nav-link" href="#!"> <i class="far fa-heart me-1"></i><small class="text-gray fw-normal"> (0)</small></a></li>
-                            <li class="nav-item"><a class="nav-link" href="#!"> <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
 
+        @Html.Partial("~/Views/Font-end/Component/Header.cshtml")
         @RenderBody()
 
         <footer class="bg-dark text-white">
@@ -109,11 +91,17 @@
     </div>
     <!-- JavaScript files-->
     <script src="~/lib/teamplate_font_end/bootstrap/js/bootstrap.bundle.min.js"></script>
+
     <script src="~/lib/teamplate_font_end/glightbox/js/glightbox.min.js"></script>
     <script src="~/lib/teamplate_font_end/nouislider/nouislider.min.js"></script>
     <script src="~/lib/teamplate_font_end/swiper/swiper-bundle.min.js"></script>
     <script src="~/lib/teamplate_font_end/choices.js/public/assets/scripts/choices.min.js"></script>
-    <script src="js/front.js"></script>
+    <script src="~/teamplate_font_end/js/front.js"></script>
+    <!-- jQuery -->
+    <script src="~/lib/teamplate_back_end/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/lib/teamplate_back_end/jquery-ui/jquery-ui.min.js"></script>
+    <script src="js/font_end/Home/home.js"></script>
     <script>
         // ------------------------------------------------------- //
         //   Inject SVG Sprite -
@@ -121,7 +109,6 @@
         //   https://css-tricks.com/ajaxing-svg-sprite/
         // ------------------------------------------------------ //
         function injectSvgSprite(path) {
-
             var ajax = new XMLHttpRequest();
             ajax.open("GET", path, true);
             ajax.send();
@@ -137,8 +124,6 @@
     </script>
     <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    @await RenderSectionAsync("Scripts", required: false)
-
- 
+    <script src="@js"></script> 
 </body>
 </html>

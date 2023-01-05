@@ -29,9 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\" />
     <Folder Include="wwwroot\lib\teamplate_font_end\" />
-    <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
 </Project>

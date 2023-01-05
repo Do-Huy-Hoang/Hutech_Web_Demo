@@ -183,7 +183,6 @@ public partial class WebDemoContext : DbContext
             entity.HasKey(e => e.UserId).HasName("PK__Users__B9BE370FEBF82203");
 
             entity.Property(e => e.UserId)
-                .ValueGeneratedNever()
                 .HasColumnName("user_id");
             entity.Property(e => e.CreateAt)
                 .HasColumnType("datetime")
