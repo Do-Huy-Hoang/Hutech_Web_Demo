@@ -3,34 +3,34 @@ var totalPage = 1;
 var list = null;
 var submit = null;
 var p = 1;
-var ordName = null;
+var cateName = null;
 $(document).ready(function () {
     $("#pagination").hide();
     $("#Previous").hide();
     setTimeout(function () {
         $("#Spinner").hide();
         $("#pagination").show();
-        getDataOrder(1, ordName);
+        getDataCategories(1, cateName);
     }, 300);
 });
 
 function search() {
-    ordName = $("input[name='orderName']").val();
-    if (ordName == null || ordName == "") {
-        ordName = null;
+    cateName = $("input[name='cateName']").val();
+    if (cateName == null || cateName == "") {
+        cateName = null;
         $("#Spinner").hide();
         $("#pagination").show();
-        getDataOrder(1, ordName);
+        getDataCategories(1, cateName);
     } else {
-        getDataOrder(p, ordName);
+        getDataCategories(p, cateName);
     }
 }
 
-function getDataOrder(p, ordName) {
+function getDataCategories(p, cateName) {
     $.ajax({
         type: "GET",
-        url: "/Orders/get_data_order",
-        data: { 'page': p, 'size': size, 'orderName': ordName },
+        url: "/AdminCategories/get_data_categories",
+        data: { 'page': p, 'size': size, 'cateName': cateName },
         async: false,
         success: function (res) {
             if (res.success) {
@@ -39,9 +39,9 @@ function getDataOrder(p, ordName) {
                     let stt = (p - 1) * size + 1;
                     let dataRes = [];
                     for (var i = 0; i < data.data.length; i++) {
-                        let itm = data.data[i];
-                        itm.STT = stt;
-                        dataRes.push(itm);
+                        let item = data.data[i];
+                        item.STT = stt;
+                        dataRes.push(item);
                         stt++;
                     }
                     list = dataRes;
@@ -67,10 +67,11 @@ function getDataOrder(p, ordName) {
     });
 }
 
+
 function per() {
     var curPage = parseInt($("#curPage").text());
     p = curPage - 1;
-    getDataCategories(p, ordName);
+    getDataCategories(p, cateName);
 
     if (p - 1 <= 0) {
         $("#Previous").hide();
@@ -84,7 +85,7 @@ function per() {
 function next() {
     var curPage = parseInt($("#curPage").text());
     p = curPage + 1;
-    getDataCategories(p, ordName);
+    getDataCategories(p, cateName);
     if (p + 1 > totalPage) {
         $("#Previous").show();
         $("#Next").hide();
@@ -95,44 +96,65 @@ function next() {
     }
 }
 
-function showInfoOrder(id) {
-    if (list != null && id != null && id >= 0) {
-        let itm = $.grep(list, function (obj) {
-            return obj.ordId == id;
+function showInfo(id) {
+    if (list != null && id != null && id > 0) {
+        let item = $.grep(list, function (obj) {
+            return obj.cateId == id
         })[0];
-        let qual = itm.orderDetails[0].ordDetailQuantity;
-        let price = itm.orderDetails[0].ordDetailProductNavigation.proPrice;
-        let total = qual * price;
-
-        $("#txtOrdID").val(itm.ordId);
-        $("#txtUserID").val(itm.ordUserId);
-        $("#txtUserName").val(itm.ordName);
-        $("#txtEmail").val(itm.ordEmail)
-        $("#txtPhone").val(itm.ordPhoneNumber);
-        $("#txtAddress").val(itm.ordAddress);
-        $("#txtQuality").val(qual)
-        $("#txtProductID").val(itm.orderDetails[0].ordDetailProductNavigation.proId)
-        $("#txtProductName").val(itm.orderDetails[0].ordDetailProductNavigation.proName)
-        $("#txtProductPrice").val("$" + price)
-        $("#txtTotal").val("$"+total)
+        $("#txtName").val(item.cateName);
+        $("#txtId").val(item.cateId);
+        $("#txtCreatAt").val(item.createAt);
     }
 }
 
-function deleteOrder(id) {
-    $("#btnDelete").click(function () {
+function save() {
+    if ($("#txtId").val() != "" && $("#txtId").val() != null && $("#txtId").val() != undefined) {
+        var item = {
+            CateId: $("#txtId").val(),
+            CateName: $("#txtName").val(),
+            CreateAt: $("#txtCreatAt").val()
+        };
         $.ajax({
-            type: "DELETE",
-            url: "/Orders/delete_order",
-            data: { 'ordId': id },
+            type: "POST",
+            url: "/AdminCategories/update_category",
+            data:
+                { 'category': item },
             async: false,
             success: function (res) {
                 if (res.success) {
                     toastr.success("", res.message);
-                    getDataOrder(p, ordName);
+                    getDataCategories(p);
+                }
+                else {
+                    toastr.error("", res.message);
+                    getDataCategories(p);
+                }
+            },
+            failure: function (res) {
+                alert(res.message);
+            },
+            error: function (res) {
+
+            }
+        });
+    }
+}
+
+function deleteAt(id) {
+    $("#btnDelete").click(function () {
+        $.ajax({
+            type: "DELETE",
+            url: "/AdminCategories/delete_category",
+            data: { 'cateId': id },
+            async: false,
+            success: function (res) {
+                if (res.success) {
+                    toastr.success("", res.message);
+                    getDataCategories(p);
                 }
                 if (res.Failed) {
                     toastr.error("", res.message);
-                    getDataOrder(p, ordName);
+                    getDataCategories(p);
                 }
                 console.log(res.success)
             },

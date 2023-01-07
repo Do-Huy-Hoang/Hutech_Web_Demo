@@ -6,7 +6,7 @@ using WebDemo.Models;
 
 namespace WebDemo.Controllers.Back_End
 {
-    public class OrdersController : Controller
+    public class AdminOrdersController : Controller
     {
         WebDemoContext context = new WebDemoContext();
         public IActionResult Index()
@@ -15,7 +15,7 @@ namespace WebDemo.Controllers.Back_End
         }
 
         [HttpGet]
-        public IActionResult get_data_order(int Page, int Size,string orderName)
+        public IActionResult get_data_order(int Page, int Size, string orderName)
         {
             var data = getOrder(Page, Size, orderName);
             if (data != null)
@@ -39,10 +39,10 @@ namespace WebDemo.Controllers.Back_End
             }
         }
 
-        private object? getOrder(int page, int size,string ordName)
+        private object? getOrder(int page, int size, string ordName)
         {
             try
-            {                         
+            {
                 if (ordName == null)
                 {
                     var ls = context.Orders.Include(x => x.OrderDetails).ThenInclude(x => x.OrdDetailProductNavigation).ToList();
@@ -117,7 +117,7 @@ namespace WebDemo.Controllers.Back_End
                 if (ordl != null)
                 {
                     context.OrderDetails.Remove(ordl);
-                    context.SaveChanges();                    
+                    context.SaveChanges();
                     if (ord != null)
                     {
                         context.Orders.Remove(ord);
@@ -132,10 +132,10 @@ namespace WebDemo.Controllers.Back_End
                 else
                 {
                     return false;
-                }                
+                }
             }
             catch (Exception)
-            {                
+            {
             }
             return false;
         }

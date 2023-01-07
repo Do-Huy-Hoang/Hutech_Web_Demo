@@ -3,7 +3,7 @@ using WebDemo.Models;
 using System.Diagnostics;
 namespace WebDemo.Controllers.Back_End
 {
-    public class CategoriesController : Controller
+    public class AdminCategoriesController : Controller
     {
         WebDemoContext context = new WebDemoContext();
         public IActionResult Index()
@@ -19,6 +19,20 @@ namespace WebDemo.Controllers.Back_End
         }
 
         #region get data
+        [HttpGet]
+        public IActionResult get_data_categories_all()
+        {
+            var ls = context.Categories.Where(c=>c.IsDelete == false).ToList();
+            var res = new
+            {
+                Success = true,
+                Message = "",
+                Data = ls,
+            };
+            return Json(res);
+        }
+
+
         [HttpGet]
         public IActionResult get_data_categories(int Page, int Size, string cateName)
         {
@@ -50,7 +64,7 @@ namespace WebDemo.Controllers.Back_End
             {
                 if (cateName == null)
                 {
-                    var ls = from c in context.Categories.ToList()
+                    var ls = from c in context.Categories.Where(c => c.IsDelete == false).ToList()
                              orderby c.CateId descending
                              select c;
                     var offset = (page - 1) * size;
@@ -100,18 +114,34 @@ namespace WebDemo.Controllers.Back_End
             var message = createData(cateName);
             if (message != null)
             {
-                var res = new
+                if (message.ToString().Equals("Error"))
                 {
-                    Success = true,
-                    Message = "Create Success",
-                };
-                return Json(res);
+                    var res = new
+                    {
+                        Success = true,
+                        Check = false,
+                        Message = "Create Success",
+                    };
+                    return Json(res);
+                }
+                else
+                {
+                    var res = new
+                    {
+                        Success = false,
+                        Check = true,
+                        Message = "Category name already exist !!!",
+                    };
+                    return Json(res);
+                }
+                
             }
             else
             {
                 var res = new
                 {
                     Success = false,
+                    Check = false,
                     Message = "Create Error"
                 };
                 return Json(res);
@@ -122,20 +152,31 @@ namespace WebDemo.Controllers.Back_End
         {
             try
             {
-                DateTime date = DateTime.Now;
-                Category cate = new Category();
-                cate.CateName = cateName;
-                cate.CreateAt = date;
-                context.Categories.Add(cate);
-                context.SaveChanges();
-                return new
+                var checkCate = context.Categories.Where(c=>c.CateName.Equals(cateName) && c.IsDelete == false).FirstOrDefault();
+                if (checkCate == null)
                 {
-                    Message = "Success"
-                };
+                    DateTime date = DateTime.Now;
+                    Category cate = new Category();
+                    cate.CateName = cateName;
+                    cate.CreateAt = date;
+                    cate.IsDelete = false;
+                    context.Categories.Add(cate);
+                    context.SaveChanges();
+                    return new
+                    {
+                        Message = "Create Success"
+                    };
+                }
+                else
+                {
+                    return new
+                    {
+                        Message = "Error"
+                    };
+                }
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -174,8 +215,8 @@ namespace WebDemo.Controllers.Back_End
                 if (category == null)
                 {
                     return null;
-                }        
-                var cate = context.Categories.Where(c=>c.CateId==category.CateId).FirstOrDefault();
+                }
+                var cate = context.Categories.Where(c => c.CateId == category.CateId).FirstOrDefault();
                 if (cate != null)
                 {
                     if (cate.CateName != category.CateName)
@@ -205,7 +246,7 @@ namespace WebDemo.Controllers.Back_End
         public IActionResult delete_category(int cateId)
         {
             var message = deleteCategory(cateId);
-            if (message!= null)
+            if (message != null)
             {
                 var res = new
                 {
@@ -231,17 +272,37 @@ namespace WebDemo.Controllers.Back_End
         {
             try
             {
-                var cate = context.Categories.Where(c => c.CateId == cateId).FirstOrDefault();
-                if (cate != null)
+                var checkPro = context.Products.Where(p => p.ProCategory == cateId).ToList();
+                if (checkPro.Count == 0)
                 {
-                    context.Categories.Remove(cate);
-                    context.SaveChanges();
-                    return new
+                    var cate = context.Categories.Where(c => c.CateId == cateId).FirstOrDefault();
+                    if (cate != null)
                     {
-                        Message = "Delete Success"
-                    };
+                        context.Categories.Remove(cate);
+                        context.SaveChanges();
+                        return new
+                        {
+                            Message = "Delete Success"
+                        };
+                    }
+                    return null;
                 }
-                return null;
+                else
+                {
+                    var cate = context.Categories.Where(c => c.CateId == cateId).FirstOrDefault();
+                    if (cate != null)
+                    {
+                        cate.IsDelete = true;
+                        context.Categories.Update(cate);
+                        context.SaveChanges();
+                        return new
+                        {
+                            Message = "Delete Success"
+                        };
+                    }
+                    return null;
+                }
+                
             }
             catch (Exception ex)
             {

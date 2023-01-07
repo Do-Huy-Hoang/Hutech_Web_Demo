@@ -48,7 +48,7 @@ namespace WebDemo.Controllers.Font_end
                         var res = new
                         {
                             Success = true,
-                        };        
+                        };
                         return Json(res);
                     }
                     else
@@ -66,6 +66,19 @@ namespace WebDemo.Controllers.Font_end
             {
                 throw;
             }
+
+        }
+        #endregion
+
+        #region Logout
+        [HttpPost]
+        public IActionResult signOut()
+        {
+            HttpContext.Session.Remove("Username");
+            HttpContext.Session.Remove("UserId");
+            HttpContext.Session.Remove("IsAdmin");
+            var res = new { Success = true, Massage = "" };
+            return Json(res);
 
         }
         #endregion
@@ -117,7 +130,7 @@ namespace WebDemo.Controllers.Font_end
                 User user = new User();
                 user.UserName = userName;
                 user.UserEmail = email;
-                user.UserPassword = EncryptString(password,_key);
+                user.UserPassword = EncryptString(password, _key);
                 user.IsAdmin = false;
                 user.CreateAt = date;
                 context.Users.Add(user);

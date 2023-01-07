@@ -3,34 +3,34 @@ var totalPage = 1;
 var list = null;
 var submit = null;
 var p = 1;
-var cateName = null;
+var ordName = null;
 $(document).ready(function () {
     $("#pagination").hide();
     $("#Previous").hide();
     setTimeout(function () {
         $("#Spinner").hide();
         $("#pagination").show();
-        getDataCategories(1, cateName);
+        getDataOrder(1, ordName);
     }, 300);
 });
 
 function search() {
-    cateName = $("input[name='cateName']").val();
-    if (cateName == null || cateName == "") {
-        cateName = null;
+    ordName = $("input[name='orderName']").val();
+    if (ordName == null || ordName == "") {
+        ordName = null;
         $("#Spinner").hide();
         $("#pagination").show();
-        getDataCategories(1, cateName);
+        getDataOrder(1, ordName);
     } else {
-        getDataCategories(p, cateName);
+        getDataOrder(p, ordName);
     }
 }
 
-function getDataCategories(p, cateName) {
+function getDataOrder(p, ordName) {
     $.ajax({
         type: "GET",
-        url: "/Categories/get_data_categories",
-        data: { 'page': p, 'size': size, 'cateName': cateName },
+        url: "/AdminOrders/get_data_order",
+        data: { 'page': p, 'size': size, 'orderName': ordName },
         async: false,
         success: function (res) {
             if (res.success) {
@@ -39,9 +39,9 @@ function getDataCategories(p, cateName) {
                     let stt = (p - 1) * size + 1;
                     let dataRes = [];
                     for (var i = 0; i < data.data.length; i++) {
-                        let item = data.data[i];
-                        item.STT = stt;
-                        dataRes.push(item);
+                        let itm = data.data[i];
+                        itm.STT = stt;
+                        dataRes.push(itm);
                         stt++;
                     }
                     list = dataRes;
@@ -67,11 +67,10 @@ function getDataCategories(p, cateName) {
     });
 }
 
-
 function per() {
     var curPage = parseInt($("#curPage").text());
     p = curPage - 1;
-    getDataCategories(p, cateName);
+    getDataCategories(p, ordName);
 
     if (p - 1 <= 0) {
         $("#Previous").hide();
@@ -85,7 +84,7 @@ function per() {
 function next() {
     var curPage = parseInt($("#curPage").text());
     p = curPage + 1;
-    getDataCategories(p, cateName);
+    getDataCategories(p, ordName);
     if (p + 1 > totalPage) {
         $("#Previous").show();
         $("#Next").hide();
@@ -96,65 +95,44 @@ function next() {
     }
 }
 
-function showInfo(id) {
-    if (list != null && id != null && id > 0) {
-        let item = $.grep(list, function (obj) {
-            return obj.cateId == id
+function showInfoOrder(id) {
+    if (list != null && id != null && id >= 0) {
+        let itm = $.grep(list, function (obj) {
+            return obj.ordId == id;
         })[0];
-        $("#txtName").val(item.cateName);
-        $("#txtId").val(item.cateId);
-        $("#txtCreatAt").val(item.createAt);
+        let qual = itm.orderDetails[0].ordDetailQuantity;
+        let price = itm.orderDetails[0].ordDetailProductNavigation.proPrice;
+        let total = qual * price;
+
+        $("#txtOrdID").val(itm.ordId);
+        $("#txtUserID").val(itm.ordUserId);
+        $("#txtUserName").val(itm.ordName);
+        $("#txtEmail").val(itm.ordEmail)
+        $("#txtPhone").val(itm.ordPhoneNumber);
+        $("#txtAddress").val(itm.ordAddress);
+        $("#txtQuality").val(qual)
+        $("#txtProductID").val(itm.orderDetails[0].ordDetailProductNavigation.proId)
+        $("#txtProductName").val(itm.orderDetails[0].ordDetailProductNavigation.proName)
+        $("#txtProductPrice").val("$" + price)
+        $("#txtTotal").val("$"+total)
     }
 }
 
-function save() {
-    if ($("#txtId").val() != "" && $("#txtId").val() != null && $("#txtId").val() != undefined) {
-        var item = {
-            CateId: $("#txtId").val(),
-            CateName: $("#txtName").val(),
-            CreateAt: $("#txtCreatAt").val()
-        };
-        $.ajax({
-            type: "POST",
-            url: "/Categories/update_category",
-            data:
-                { 'category': item },
-            async: false,
-            success: function (res) {
-                if (res.success) {
-                    toastr.success("", res.message);
-                    getDataCategories(p);
-                }
-                else {
-                    toastr.error("", res.message);
-                    getDataCategories(p);
-                }
-            },
-            failure: function (res) {
-                alert(res.message);
-            },
-            error: function (res) {
-
-            }
-        });
-    }
-}
-
-function deleteAt(id) {
+function deleteOrder(id) {
     $("#btnDelete").click(function () {
         $.ajax({
             type: "DELETE",
-            url: "/Categories/delete_category",
-            data: { 'cateId': id },
+            url: "/AdminOrders/delete_order",
+            data: { 'ordId': id },
             async: false,
             success: function (res) {
                 if (res.success) {
                     toastr.success("", res.message);
-                    getDataCategories(p);
+                    getDataOrder(p, ordName);
                 }
                 if (res.Failed) {
                     toastr.error("", res.message);
-                    getDataCategories(p);
+                    getDataOrder(p, ordName);
                 }
                 console.log(res.success)
             },

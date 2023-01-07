@@ -1,8 +1,14 @@
 ﻿@{
     var js = "";
+    var css = "";
     if (ViewData["js"] != null)
     {
         js = ViewData["js"].ToString();
+    }
+
+    if (ViewData["css"] != null)
+    {
+        css = ViewData["css"].ToString();
     }
 }
 
@@ -35,7 +41,7 @@
     <link rel="stylesheet" href="~/teamplate_font_end/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.png">
-    <link rel="stylesheet" href="~/css/font_end/login.css">
+    <link rel="stylesheet" href="@css">
 </head>
 <body>
      <div class="page-holder">
@@ -101,6 +107,7 @@
     <script src="~/lib/teamplate_back_end/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="~/lib/teamplate_back_end/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/js/jquery.tmpl.js"></script>
     <script src="js/font_end/Home/home.js"></script>
     <script>
         // ------------------------------------------------------- //

@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Create";
-    ViewData["js"] = "/js/back_end/Category/create.js";
+    ViewData["js"] = "/js/back_end/Category/cateCreate.js";
 }
 <div class="content-wrapper">
     <div class="content-header">
@@ -17,9 +17,9 @@
                 </div>
             </div>
         </div>
-        <a asp-area="" asp-controller="Categories" asp-action="Index" class="badge badge-light">
+        <a asp-area="" asp-controller="AdminCategories" asp-action="Index" class="badge badge-light">
             <div class="col-sm-12">
-                <i class="fa fa-arrow-left fa-1x" aria-hidden="true" > back</i>         
+                <i class="fa fa-arrow-left fa-1x" aria-hidden="true"> back</i>
             </div>
         </a>
     </div>
@@ -28,17 +28,18 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
-                    <form id="form_input">
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label for="CateName">Email address</label>
-                                <input type="text" class="form-control" name="cateName" placeholder="Enter category name">
+                    <div class="box-body">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Category name</span>
                             </div>
+                            <input type="text" class="form-control" name="cateName" placeholder="Enter category name" aria-describedby="basic-addon3">
+                            <div class="invalid-feedback" style="font-size:15px;" id="message"></div>
                         </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
+                    </div>
+                    <div class="box-footer">
+                        <button type="button" onclick="createCate()" class="btn btn-primary">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>

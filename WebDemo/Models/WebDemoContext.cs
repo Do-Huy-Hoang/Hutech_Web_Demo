@@ -30,7 +30,7 @@ public partial class WebDemoContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=localhost; Initial Catalog=WebDemo; user id=sa; password=1;Encrypt=false;TrustServerCertificate=true");
+        => optionsBuilder.UseSqlServer("Data Source=LAPTOP-J3T8DNJO; Initial Catalog=WebDemo; user id=sa; password=1;Encrypt=false;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -45,6 +45,7 @@ public partial class WebDemoContext : DbContext
             entity.Property(e => e.CreateAt)
                 .HasColumnType("datetime")
                 .HasColumnName("createAt");
+            entity.Property(e => e.IsDelete).HasColumnName("isDelete");
             entity.Property(e => e.UpdateAt)
                 .HasColumnType("datetime")
                 .HasColumnName("updateAt");
@@ -114,6 +115,7 @@ public partial class WebDemoContext : DbContext
             entity.Property(e => e.CreateAt)
                 .HasColumnType("datetime")
                 .HasColumnName("createAt");
+            entity.Property(e => e.IsDelete).HasColumnName("isDelete");
             entity.Property(e => e.ProCategory).HasColumnName("pro_Category");
             entity.Property(e => e.ProDescription)
                 .HasMaxLength(150)
@@ -182,8 +184,7 @@ public partial class WebDemoContext : DbContext
         {
             entity.HasKey(e => e.UserId).HasName("PK__Users__B9BE370FEBF82203");
 
-            entity.Property(e => e.UserId)
-                .HasColumnName("user_id");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.Property(e => e.CreateAt)
                 .HasColumnType("datetime")
                 .HasColumnName("createAt");

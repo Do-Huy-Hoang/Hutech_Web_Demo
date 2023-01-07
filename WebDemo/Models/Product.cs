@@ -23,6 +23,8 @@ public partial class Product
 
     public DateTime? UpdateAt { get; set; }
 
+    public bool? IsDelete { get; set; }
+
     public virtual ICollection<OrderDetail> OrderDetails { get; } = new List<OrderDetail>();
 
     public virtual Category ProCategoryNavigation { get; set; } = null!;

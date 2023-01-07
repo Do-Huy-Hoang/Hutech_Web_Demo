@@ -13,5 +13,7 @@ public partial class Category
 
     public DateTime? UpdateAt { get; set; }
 
+    public bool? IsDelete { get; set; }
+
     public virtual ICollection<Product> Products { get; } = new List<Product>();
 }

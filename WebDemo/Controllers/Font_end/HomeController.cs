@@ -18,6 +18,6 @@ namespace WebDemo.Controllers
             return View("Views/Font-end/Home/index.cshtml");
         }
 
-       
+
     }
 }
