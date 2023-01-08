@@ -4,6 +4,9 @@ var list = null;
 var submit = null;
 var p = 1;
 var cateName = null;
+var icon = '<i class="fas fa-exclamation-circle" style="padding-right:10px;"></i>';
+var pName = document.getElementById('pName');
+var checkName = false;
 $(document).ready(function () {
     $("#pagination").hide();
     $("#Previous").hide();
@@ -45,7 +48,7 @@ function getDataCategories(p, cateName) {
                         stt++;
                     }
                     list = dataRes;
-                    if (data.totalPage == 1) {
+                    if (data.totalPage <= 1) {
                         $("#pagination").hide();
                     }
                     $("#tbodyResult").html("");
@@ -97,6 +100,7 @@ function next() {
 }
 
 function showInfo(id) {
+    $("#pName").hide();
     if (list != null && id != null && id > 0) {
         let item = $.grep(list, function (obj) {
             return obj.cateId == id
@@ -109,35 +113,52 @@ function showInfo(id) {
 
 function save() {
     if ($("#txtId").val() != "" && $("#txtId").val() != null && $("#txtId").val() != undefined) {
-        var item = {
-            CateId: $("#txtId").val(),
-            CateName: $("#txtName").val(),
-            CreateAt: $("#txtCreatAt").val()
-        };
-        $.ajax({
-            type: "POST",
-            url: "/AdminCategories/update_category",
-            data:
-                { 'category': item },
-            async: false,
-            success: function (res) {
-                if (res.success) {
-                    toastr.success("", res.message);
-                    getDataCategories(p);
+        if ($("#txtName").val() == "" && $("#txtName").val() == null && $("#txtName").val() == undefined) {
+            pName.innerHTML = icon + 'Cate name can not blank!!!';
+            $("#pName").show();
+        } else {
+            $("#pName").hide();
+            var item = {
+                CateId: $("#txtId").val(),
+                CateName: $("#txtName").val(),
+                CreateAt: $("#txtCreatAt").val()
+            }; 
+            update(item);
+        }
+           
+    }
+}
+
+function update(item) {
+    $.ajax({
+        type: "POST",
+        url: "/AdminCategories/update_category",
+        data:
+            { 'category': item },
+        async: false,
+        success: function (res) {
+            if (res.success) {
+                toastr.success("", res.message);
+                setTimeout(function () {
+                    window.location.href = "/AdminCategories";
+                }, 1000)
+            } else {
+                if (res.check) {
+                    pName.innerHTML = icon + res.message;
+                    $("#pName").show();
                 }
                 else {
                     toastr.error("", res.message);
-                    getDataCategories(p);
                 }
-            },
-            failure: function (res) {
-                alert(res.message);
-            },
-            error: function (res) {
-
             }
-        });
-    }
+        },
+        failure: function (res) {
+            alert(res.message);
+        },
+        error: function (res) {
+
+        }
+    });
 }
 
 function deleteAt(id) {

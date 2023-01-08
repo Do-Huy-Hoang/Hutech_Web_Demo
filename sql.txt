@@ -2,73 +2,159 @@ create database WebDemo
 go
 use WebDemo
 go
-create table Categories(
-	cate_id int identity primary key,
-	cate_name nvarchar(150) NOT NULL,
-	createAt datetime NULL,
-	updateAt datetime NULL,
-	isDelete bit NULL,
-)
-go
-create table Products(
-	pro_id int identity primary key,
-	pro_name nvarchar(150) NOT NULL,
-	pro_price nvarchar(150) NOT NULL,
-	pro_quantity int NOT NULL,
-	pro_description nvarchar(150) NOT NULL,
-	pro_img varchar(150) NOT NULL,
-	pro_Category int NOT NULL,
-	createAt datetime NULL,
-	updateAt datetime NULL,
-	isDelete bit NULL,
-)
-go
-create table Product_img(
-	proImg_id int identity primary key,
-	proImg_path varchar(150) NOT NULL,
-	proImg_Product int NOT NULL,
-	createAt datetime NULL
-) 
-go
-create table Users(
-	user_id int primary identity key,
-	user_name varchar(150) NOT NULL,
-	user_password varchar(150) NOT NULL,
-	user_email varchar(150)NOT NULL,
-	user_phoneNumber varchar(150) NULL,
-	user_address varchar(150) NULL,
-	isAdmin bit NOT NULL,
-	createAt datetime NULL,
-	updateAt datetime NULL
-)
-go
-create table Orders(
-	ord_id int primary key,
-	ord_userId int NOT NULL,
-	ord_name varchar(150) NOT NULL,
-	ord_email varchar(150)NOT NULL,
-	ord_phoneNumber varchar(150)NOT NULL,
-	ord_address varchar(150) NULL,
-	createAt datetime NULL,
-)
-go
-create table Order_detail(
-	ordDetail_id int identity primary key,
-	ordDetail_Order int NOT NULL,
-	ordDetail_Product int NOT NULL,
-	ordDetail_Quantity int NOT NULL,
-)
-go
-create table Roles(
-	role_id int identity primary key,
-	role_name varchar(150) NOT NULL,
-	role_user int NOT NULL,
-)
-go
-ALTER TABLE Products ADD CONSTRAINT fk_Product_Category_pro_Category FOREIGN KEY (pro_Category) REFERENCES Categories (cate_id);
-ALTER TABLE Product_img ADD CONSTRAINT fk_Product_img_Product_proImg_Product FOREIGN KEY (proImg_Product) REFERENCES Products (pro_id);
-ALTER TABLE Orders ADD CONSTRAINT fk_Order_User_ord_userId FOREIGN KEY (ord_userId) REFERENCES Users (user_id);
-ALTER TABLE Order_detail ADD CONSTRAINT fk_Order_detail_Product_ordDetail_Product FOREIGN KEY (ordDetail_Product) REFERENCES Products (pro_id);
-ALTER TABLE Order_detail ADD CONSTRAINT fk_Order_detail_Order_ordDetail_Order FOREIGN KEY (ordDetail_Order) REFERENCES Orders (ord_id);
-ALTER TABLE Roles ADD CONSTRAINT fk_Role_User_role_user FOREIGN KEY (role_user) REFERENCES Users (user_id);
+GO
+CREATE TABLE [dbo].[Category](
+	[cate_id] [int] IDENTITY(1,1) NOT NULL,
+	[cate_name] [nvarchar](150) NOT NULL,
+	[createAt] [datetime] NULL,
+	[updateAt] [datetime] NULL,
+	[isDelete] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[cate_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Order]    Script Date: 1/8/2023 9:31:18 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Order](
+	[ord_id] [int] NOT NULL,
+	[ord_userId] [int] NOT NULL,
+	[ord_name] [varchar](150) NOT NULL,
+	[ord_email] [varchar](150) NOT NULL,
+	[ord_phoneNumber] [varchar](150) NOT NULL,
+	[ord_address] [varchar](150) NULL,
+	[createAt] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ord_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Order_detail]    Script Date: 1/8/2023 9:31:18 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Order_detail](
+	[ordDetail_id] [int] IDENTITY(1,1) NOT NULL,
+	[ordDetail_Order] [int] NOT NULL,
+	[ordDetail_Product] [int] NOT NULL,
+	[ordDetail_Quantity] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ordDetail_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Product]    Script Date: 1/8/2023 9:31:18 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Product](
+	[pro_id] [int] IDENTITY(1,1) NOT NULL,
+	[pro_name] [nvarchar](150) NOT NULL,
+	[pro_price] [nvarchar](150) NOT NULL,
+	[pro_quantity] [int] NOT NULL,
+	[pro_description] [text] NOT NULL,
+	[pro_img] [varchar](150) NOT NULL,
+	[pro_Category] [int] NOT NULL,
+	[createAt] [datetime] NULL,
+	[updateAt] [datetime] NULL,
+	[isDelete] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[pro_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Product_img]    Script Date: 1/8/2023 9:31:18 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Product_img](
+	[proImg_id] [int] IDENTITY(1,1) NOT NULL,
+	[proImg_path] [varchar](150) NOT NULL,
+	[proImg_Product] [int] NOT NULL,
+	[createAt] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[proImg_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Users]    Script Date: 1/8/2023 9:31:18 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Users](
+	[user_id] [int] IDENTITY(1,1) NOT NULL,
+	[user_name] [varchar](150) NOT NULL,
+	[user_password] [varchar](150) NOT NULL,
+	[user_email] [varchar](150) NOT NULL,
+	[user_phoneNumber] [varchar](150) NULL,
+	[user_address] [varchar](150) NULL,
+	[isAdmin] [bit] NOT NULL,
+	[createAt] [datetime] NULL,
+	[updateAt] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[user_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Category] ON 
+
+INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (1, N'Samsung', CAST(N'2023-01-08T18:58:26.423' AS DateTime), NULL, 0)
+INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (2, N'Oppo', CAST(N'2023-01-08T18:59:09.393' AS DateTime), NULL, 0)
+SET IDENTITY_INSERT [dbo].[Category] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Product] ON 
+
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (2, N'Samsung Galaxy S22 Ultra 5G 128GB ', N'21.990.000', 20, N'Galaxy S22 Ultra 5G is the most advanced smartphone in the Galaxy S22 series 3 that Samsung has launched. Integrating the perfect S Pen in the body, equipped with a powerful processor for extremely smooth and outstanding usage tasks with a unique bezel-less camera cluster with its own signature.', N'img/product/2/SamsungGalaxyS22Ultra5G128GB.jpg', 1, CAST(N'2023-01-08T19:06:51.900' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (3, N'Samsung Galaxy Z Flip4 128GB ', N'18.490.000', 20, N'Samsung Galaxy Z Flip4 128GB has officially launched the technology market, marking Samsung''s return on the user-oriented path of convenience on folding phones. With increased durability and beautiful design, Flip4 becomes one of the bright spots for the second half of 2022.', N'img/product/3/samsungzflip4.jpg', 1, CAST(N'2023-01-08T21:18:34.613' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (4, N'Samsung Galaxy Z Fold4 256GB', N'35.490.000', 10, N'At the annual Samsung Unpacked event, the 256GB Samsung Galaxy Z Fold4 was officially launched to the technology market, bringing with it many valuable improvements that make the Galaxy Z Fold a better folding phone.', N'img/product/4/SamsungGalaxyZFold4 256GB.jpg', 1, CAST(N'2023-01-08T21:22:45.320' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (5, N'Samsung Galaxy Z Fold3 5G 256GB', N'27.990.000', 40, N'Samsung Galaxy Z Fold3 5G, a fully upgraded phone in many aspects, especially this is the world''s first folding screen phone with a hidden camera (August 2021). The product will be a "hit" of Samsung, contributing to bringing new experiences to users.', N'img/product/5/SamsungGalaxyZFold35G256GB.jpg', 1, CAST(N'2023-01-08T21:24:13.347' AS DateTime), NULL, 0)
+SET IDENTITY_INSERT [dbo].[Product] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Users] ON 
+
+INSERT [dbo].[Users] ([user_id], [user_name], [user_password], [user_email], [user_phoneNumber], [user_address], [isAdmin], [createAt], [updateAt]) VALUES (1, N'mh9998', N'GmUOGiX5odIrzamRIUGjLdFanlfQ9qPC+UrLvoCIZAg=', N'g@gmail.com', NULL, NULL, 1, CAST(N'2023-01-08T21:02:49.717' AS DateTime), NULL)
+SET IDENTITY_INSERT [dbo].[Users] OFF
+GO
+ALTER TABLE [dbo].[Order]  WITH CHECK ADD  CONSTRAINT [fk_Order_User_ord_userId] FOREIGN KEY([ord_userId])
+REFERENCES [dbo].[Users] ([user_id])
+GO
+ALTER TABLE [dbo].[Order] CHECK CONSTRAINT [fk_Order_User_ord_userId]
+GO
+ALTER TABLE [dbo].[Order_detail]  WITH CHECK ADD  CONSTRAINT [fk_Order_detail_Order_ordDetail_Order] FOREIGN KEY([ordDetail_Order])
+REFERENCES [dbo].[Order] ([ord_id])
+GO
+ALTER TABLE [dbo].[Order_detail] CHECK CONSTRAINT [fk_Order_detail_Order_ordDetail_Order]
+GO
+ALTER TABLE [dbo].[Order_detail]  WITH CHECK ADD  CONSTRAINT [fk_Order_detail_Product_ordDetail_Product] FOREIGN KEY([ordDetail_Product])
+REFERENCES [dbo].[Product] ([pro_id])
+GO
+ALTER TABLE [dbo].[Order_detail] CHECK CONSTRAINT [fk_Order_detail_Product_ordDetail_Product]
+GO
+ALTER TABLE [dbo].[Product]  WITH CHECK ADD  CONSTRAINT [fk_Product_Category_pro_Category] FOREIGN KEY([pro_Category])
+REFERENCES [dbo].[Category] ([cate_id])
+GO
+ALTER TABLE [dbo].[Product] CHECK CONSTRAINT [fk_Product_Category_pro_Category]
+GO
+ALTER TABLE [dbo].[Product_img]  WITH CHECK ADD  CONSTRAINT [fk_Product_img_Product_proImg_Product] FOREIGN KEY([proImg_Product])
+REFERENCES [dbo].[Product] ([pro_id])
+GO
+ALTER TABLE [dbo].[Product_img] CHECK CONSTRAINT [fk_Product_img_Product_proImg_Product]
+GO
+USE [master]
+GO
+ALTER DATABASE [WebDemo] SET  READ_WRITE 
+GO
 

@@ -8,14 +8,27 @@ namespace WebDemo.Controllers.Back_End
         WebDemoContext context = new WebDemoContext();
         public IActionResult Index()
         {
-            return View("Views/Back-end/Category/index.cshtml");
+            if (HttpContext.Session.GetString("IsAdmin") != null && (HttpContext.Session.GetString("IsAdmin").Equals("True")))
+            {
+                return View("Views/Back-end/Category/index.cshtml");
+            }
+            else
+            {
+                return Redirect("/404");
+            }       
         }
 
         [HttpGet]
         public IActionResult create(int id)
         {
-
-            return View("Views/Back-end/Category/Add.cshtml");
+            if (HttpContext.Session.GetString("IsAdmin") != null && (HttpContext.Session.GetString("IsAdmin").Equals("True")))
+            {
+                return View("Views/Back-end/Category/Add.cshtml");
+            }
+            else
+            {
+                return Redirect("/404");
+            }      
         }
 
         #region get data
@@ -112,9 +125,19 @@ namespace WebDemo.Controllers.Back_End
         public IActionResult create_category(string cateName)
         {
             var message = createData(cateName);
-            if (message != null)
+            if (message != 0)
             {
-                if (message.ToString().Equals("Error"))
+                if (message == 2)
+                {
+                    var res = new
+                    {
+                        Success = false,
+                        Check = true,
+                        Message = "Category name already exist !!!",
+                    };
+                    return Json(res);                 
+                }
+                else
                 {
                     var res = new
                     {
@@ -123,18 +146,7 @@ namespace WebDemo.Controllers.Back_End
                         Message = "Create Success",
                     };
                     return Json(res);
-                }
-                else
-                {
-                    var res = new
-                    {
-                        Success = false,
-                        Check = true,
-                        Message = "Category name already exist !!!",
-                    };
-                    return Json(res);
-                }
-                
+                }        
             }
             else
             {
@@ -148,7 +160,7 @@ namespace WebDemo.Controllers.Back_End
             }
         }
 
-        private object createData(string cateName)
+        private int createData(string cateName)
         {
             try
             {
@@ -162,22 +174,16 @@ namespace WebDemo.Controllers.Back_End
                     cate.IsDelete = false;
                     context.Categories.Add(cate);
                     context.SaveChanges();
-                    return new
-                    {
-                        Message = "Create Success"
-                    };
+                    return 1;
                 }
                 else
                 {
-                    return new
-                    {
-                        Message = "Error"
-                    };
+                    return 2;
                 }
             }
             catch (Exception)
             {
-                throw;
+                return 0;
             }
         }
         #endregion
@@ -187,55 +193,71 @@ namespace WebDemo.Controllers.Back_End
         public IActionResult update_category(Category category)
         {
             var message = updateCategory(category);
-            if (message != null)
+            if (message != 0)
             {
-                var res = new
+                if (message == 2)
                 {
-                    Success = true,
-                    Message = "Create Success",
-                };
-                return Json(res);
+                    var res = new
+                    {
+                        Success = false,
+                        Check = true,
+                        Message = "Category name already exist !!!",
+                    };
+                    return Json(res);
+                }
+                else
+                {
+                    var res = new
+                    {
+                        Success = true,
+                        Check = false,
+                        Message = "Update Success",
+                    };
+                    return Json(res);
+                }
             }
             else
             {
                 var res = new
                 {
                     Success = false,
-                    Message = "Create Error"
+                    Check = false,
+                    Message = "Update Error"
                 };
                 return Json(res);
             }
         }
 
-        private object? updateCategory(Category category)
+        private int updateCategory(Category category)
         {
             try
             {
-                DateTime date = DateTime.Now;
-                if (category == null)
+                var checkCate = context.Categories.Where(c => c.CateName.Equals(category.CateName) && c.IsDelete == false).FirstOrDefault();
+                if (checkCate == null)
                 {
-                    return null;
-                }
-                var cate = context.Categories.Where(c => c.CateId == category.CateId).FirstOrDefault();
-                if (cate != null)
-                {
-                    if (cate.CateName != category.CateName)
+                    DateTime date = DateTime.Now;
+                    if (category == null)
                     {
-                        cate.CateName = category.CateName;
+                        return 0;
                     }
-                    cate.UpdateAt = date;
-                    context.Categories.Update(cate);
-                    context.SaveChanges();
-                    return new
+                    var cate = context.Categories.Where(c => c.CateId == category.CateId).FirstOrDefault();
+                    if (cate != null)
                     {
-                        Message = "Success"
-                    };
+                        if (cate.CateName != category.CateName)
+                        {
+                            cate.CateName = category.CateName;
+                        }
+                        cate.UpdateAt = date;
+                        context.Categories.Update(cate);
+                        context.SaveChanges();
+                        return 1;
+                    }
                 }
-                return null;
+                return 2;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return null;
+                return 0;
             }
         }
 

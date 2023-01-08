@@ -33,4 +33,9 @@
     <Folder Include="wwwroot\lib\teamplate_font_end\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Views\Back-End\Product\Add.cshtml" />
+    <None Include="Views\Back-End\Product\Index.cshtml" />
+  </ItemGroup>
+
 </Project>

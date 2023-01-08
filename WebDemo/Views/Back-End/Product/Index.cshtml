@@ -1,7 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "Categories Manager";
+    ViewData["Title"] = "Products Manager";
     ViewData["css"] = "<link rel='stylesheet' href='~/lib/teamplate_back_end/datatables.net-bs/css/dataTables.bootstrap.min.css'>";
-    ViewData["js"] = "/js/back_end/Category/cateIndex.js";
+    ViewData["js"] = "/js/back_end/Product/proIndex.js";
 }
 
 
@@ -10,12 +10,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Categories</h1>
+                    <h1 class="m-0">Products</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Categories</li>
+                        <li class="breadcrumb-item active">Products</li>
                     </ol>
                 </div>
             </div>
@@ -28,13 +28,13 @@
                     <div class="card">
                         <div class="col-sm-12 row">
                             <div class="card-header col-sm-3 col-md-2">
-                                <a asp-area="" asp-controller="AdminCategories" asp-action="Create" type="button" class="btn btn-block btn-success">
-                                    New
+                                <a asp-area="" asp-controller="AdminProduct" asp-action="Create" type="button" class="btn btn-block btn-success">
+                                    New Product
                                 </a>
                             </div>
                             <div class="card-header col-sm-9 col-md-10">
                                 <div class="input-group col-sm-6 float-sm-right">
-                                    <input type="text" class="form-control" name="cateName" placeholder="Search categories" >
+                                    <input type="text" class="form-control" name="proName" placeholder="Search Products">
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary" onclick="search()">Search</button>
                                     </div>
@@ -46,7 +46,12 @@
                                 <thead>
                                     <tr class="col-sm-12">
                                         <th class="col-sm-1">Id</th>
-                                        <th class="col-sm-8">Name</th>
+                                        <th class="col-sm-1">Name</th>
+                                        <th class="col-sm-1">Price</th>
+                                        <th class="col-sm-1">Quantity</th>
+                                        <th class="col-sm-3">description</th>
+                                        <th class="col-sm-2">Image</th>
+                                        
                                         <th class="col-sm-2">Action</th>
                                     </tr>
                                 </thead>
@@ -85,12 +90,17 @@
 <script id="courseTemplate" type="text/x-jquery-tmpl">
      <tr>
       <td scope="row">${STT}</td>
-      <td>${cateName}</td>
+      <td>${proName}</td>
+       <td>${proPrice}</td>
+        <td>${proQuantity}</td>
+         <td>${proDescription}</td>
+          <td><img src="${proImg}" class="img-thumbnail"  id="imgSize" style="height:120px;width:150px;"></td>
+           
       <td>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg" onclick="showInfo(${cateId})">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg" onclick="showInfo(${proId})">
               Edit
           </button>
-          <button type="button" class="btn btn-danger" data-toggle="modal" onclick="deleteAt(${cateId})" data-target="#modal-sm">
+          <button type="button" class="btn btn-danger" data-toggle="modal" onclick="deleteAt(${proId})" data-target="#modal-sm">
               Delete
           </button>
       </td>
@@ -101,8 +111,8 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Edit</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="close()">
+                <h4 class="modal-title">Edit Product</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -110,16 +120,50 @@
                 <div class="modal-body">
                     <div class="modal-body">
                         <div class="row">
-                            <label for="txtName" class="col-sm-1 col-form-label">ID</label>
-                            <div class="col-sm-11">
-                                <input type="text" class="form-control" id="txtName" placeholder="Enter email">
-                            </div>
-                             <div class="invalid-feedback" style="font-size:15px;" id="pName"></div>
                             <div class="col-sm-11">
                                 <input type="hidden" class="form-control" id="txtId">
                             </div>
+                            <label for="txtName" class="col-sm-3 col-form-label">Product name</label>
                             <div class="col-sm-11">
-                                <input type="hidden" class="form-control" id="txtCreatAt">
+                                <input type="text" class="form-control" id="txtName" placeholder="Product name">
+                            </div>
+                            <div class="invalid-feedback" style="font-size:15px;" id="pName"></div>
+                        </div>
+                       
+                        <div class="row">
+                            <label for="txtPrice" class="col-sm-3 col-form-label">Product price</label>
+                            <div class="col-sm-11">
+                                <input type="text" class="form-control" id="txtPrice">
+                            </div>
+                            <div class="invalid-feedback" style="font-size:15px;" id="pPrice"></div>
+                        </div>
+                        <div class="row">
+                            <label for="txtQuantity" class="col-sm-3 col-form-label">Product quantity</label>
+                            <div class="col-sm-11">
+                                <input type="text" class="form-control" id="txtQuantity">
+                            </div>
+                            <div class="invalid-feedback" style="font-size:15px;" id="pQuantity"></div>
+                        </div>
+                        <div class="row">
+                            <label for="txtDescription" class="col-sm-3 col-form-label">Product description</label>
+                            <div class="col-sm-11">
+                                <input type="text" class="form-control" id="txtDescription">
+                            </div>
+                            <div class="invalid-feedback" style="font-size:15px;" id="pDescription"></div>
+                        </div>
+                        <div class="row">
+                            <label for="txtImg" class="col-sm-3 col-form-label">Product image</label>
+                            <div class="col-sm-11 custom-file">
+                                <input type="file" class="custom-file-input" name="proImg" id="fileinput" accept="image/png, image/jpeg">
+                                <label class="custom-file-label" for="fileinput">Choose file</label>
+                            </div>
+                        </div>
+                        <div class="row" id="getImg">
+                        </div>
+                        <div class="row">
+                            <label for="txtCategory" class="col-sm-3 col-form-label">Product category</label>
+                            <div class="col-sm-11">
+                                <select class="custom-select" id="tbodyResult2"></select>
                             </div>
                         </div>
                     </div>
@@ -137,13 +181,13 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Small Modal</h4>
+                <h4 class="modal-title">Delete Product?</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Are you sure you want to delete this category?</p>
+                <p>Do you want to delete this Product?</p>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -154,5 +198,8 @@
 </div>
 
 
+<script id="courseTemplate2" type="text/x-jquery-tmpl">
+    <option value="${cateId}">${cateName}</option>
+</script>
 
 

@@ -25,8 +25,6 @@ public partial class WebDemoContext : DbContext
 
     public virtual DbSet<ProductImg> ProductImgs { get; set; }
 
-    public virtual DbSet<Role> Roles { get; set; }
-
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -36,7 +34,9 @@ public partial class WebDemoContext : DbContext
     {
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.CateId).HasName("PK__Categori__34EAD173A6B01573");
+            entity.HasKey(e => e.CateId).HasName("PK__Category__34EAD17332EF90C3");
+
+            entity.ToTable("Category");
 
             entity.Property(e => e.CateId).HasColumnName("cate_id");
             entity.Property(e => e.CateName)
@@ -53,7 +53,9 @@ public partial class WebDemoContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrdId).HasName("PK__Orders__DC39D7DFF6F2ECE1");
+            entity.HasKey(e => e.OrdId).HasName("PK__Order__DC39D7DF2AC524A6");
+
+            entity.ToTable("Order");
 
             entity.Property(e => e.OrdId)
                 .ValueGeneratedNever()
@@ -87,7 +89,7 @@ public partial class WebDemoContext : DbContext
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => e.OrdDetailId).HasName("PK__Order_de__B52E32E5F68024AA");
+            entity.HasKey(e => e.OrdDetailId).HasName("PK__Order_de__B52E32E56DFF5396");
 
             entity.ToTable("Order_detail");
 
@@ -109,7 +111,9 @@ public partial class WebDemoContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.ProId).HasName("PK__Products__335E4CA609AAD138");
+            entity.HasKey(e => e.ProId).HasName("PK__Product__335E4CA6BA949698");
+
+            entity.ToTable("Product");
 
             entity.Property(e => e.ProId).HasColumnName("pro_id");
             entity.Property(e => e.CreateAt)
@@ -118,7 +122,7 @@ public partial class WebDemoContext : DbContext
             entity.Property(e => e.IsDelete).HasColumnName("isDelete");
             entity.Property(e => e.ProCategory).HasColumnName("pro_Category");
             entity.Property(e => e.ProDescription)
-                .HasMaxLength(150)
+                .HasColumnType("text")
                 .HasColumnName("pro_description");
             entity.Property(e => e.ProImg)
                 .HasMaxLength(150)
@@ -143,7 +147,7 @@ public partial class WebDemoContext : DbContext
 
         modelBuilder.Entity<ProductImg>(entity =>
         {
-            entity.HasKey(e => e.ProImgId).HasName("PK__Product___40A564A43AD17EAE");
+            entity.HasKey(e => e.ProImgId).HasName("PK__Product___40A564A41C1E7635");
 
             entity.ToTable("Product_img");
 
@@ -163,26 +167,9 @@ public partial class WebDemoContext : DbContext
                 .HasConstraintName("fk_Product_img_Product_proImg_Product");
         });
 
-        modelBuilder.Entity<Role>(entity =>
-        {
-            entity.HasKey(e => e.RoleId).HasName("PK__Roles__760965CCCDEB9B8A");
-
-            entity.Property(e => e.RoleId).HasColumnName("role_id");
-            entity.Property(e => e.RoleName)
-                .HasMaxLength(150)
-                .IsUnicode(false)
-                .HasColumnName("role_name");
-            entity.Property(e => e.RoleUser).HasColumnName("role_user");
-
-            entity.HasOne(d => d.RoleUserNavigation).WithMany(p => p.Roles)
-                .HasForeignKey(d => d.RoleUser)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_Role_User_role_user");
-        });
-
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__B9BE370FEBF82203");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__B9BE370F7405CD01");
 
             entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.Property(e => e.CreateAt)
