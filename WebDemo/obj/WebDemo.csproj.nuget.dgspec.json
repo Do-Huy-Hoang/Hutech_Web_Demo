@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj": {}
+    "C:\\Users\\AN515-55\\Downloads\\New folder\\WebDemo\\WebDemo.csproj": {}
   },
   "projects": {
-    "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj": {
+    "C:\\Users\\AN515-55\\Downloads\\New folder\\WebDemo\\WebDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj",
+        "projectUniqueName": "C:\\Users\\AN515-55\\Downloads\\New folder\\WebDemo\\WebDemo.csproj",
         "projectName": "WebDemo",
-        "projectPath": "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj",
-        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "D:\\Hutech\\DuAn\\WebDemo\\obj\\",
+        "projectPath": "C:\\Users\\AN515-55\\Downloads\\New folder\\WebDemo\\WebDemo.csproj",
+        "packagesPath": "C:\\Users\\AN515-55\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AN515-55\\Downloads\\New folder\\WebDemo\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\AN515-55\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,7 +79,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -94,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
