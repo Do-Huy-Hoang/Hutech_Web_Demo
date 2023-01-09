@@ -1,7 +1,6 @@
 create database WebDemo
 go
 use WebDemo
-go
 GO
 CREATE TABLE [dbo].[Category](
 	[cate_id] [int] IDENTITY(1,1) NOT NULL,
@@ -15,7 +14,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Order]    Script Date: 1/8/2023 9:31:18 PM ******/
+/****** Object:  Table [dbo].[Order]    Script Date: 1/9/2023 2:16:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -34,7 +33,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Order_detail]    Script Date: 1/8/2023 9:31:18 PM ******/
+/****** Object:  Table [dbo].[Order_detail]    Script Date: 1/9/2023 2:16:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -50,7 +49,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Product]    Script Date: 1/8/2023 9:31:18 PM ******/
+/****** Object:  Table [dbo].[Product]    Script Date: 1/9/2023 2:16:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -72,7 +71,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Product_img]    Script Date: 1/8/2023 9:31:18 PM ******/
+/****** Object:  Table [dbo].[Product_img]    Script Date: 1/9/2023 2:16:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -88,7 +87,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 1/8/2023 9:31:18 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 1/9/2023 2:16:52 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -111,14 +110,14 @@ PRIMARY KEY CLUSTERED
 GO
 SET IDENTITY_INSERT [dbo].[Category] ON 
 
-INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (1, N'Samsung', CAST(N'2023-01-08T18:58:26.423' AS DateTime), NULL, 0)
+INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (1, N'Samsung', CAST(N'2023-01-08T18:58:26.423' AS DateTime), CAST(N'2023-01-09T14:15:23.253' AS DateTime), 0)
 INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (2, N'Oppo', CAST(N'2023-01-08T18:59:09.393' AS DateTime), NULL, 0)
 SET IDENTITY_INSERT [dbo].[Category] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Product] ON 
 
 INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (2, N'Samsung Galaxy S22 Ultra 5G 128GB ', N'21.990.000', 20, N'Galaxy S22 Ultra 5G is the most advanced smartphone in the Galaxy S22 series 3 that Samsung has launched. Integrating the perfect S Pen in the body, equipped with a powerful processor for extremely smooth and outstanding usage tasks with a unique bezel-less camera cluster with its own signature.', N'img/product/2/SamsungGalaxyS22Ultra5G128GB.jpg', 1, CAST(N'2023-01-08T19:06:51.900' AS DateTime), NULL, 0)
-INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (3, N'Samsung Galaxy Z Flip4 128GB ', N'18.490.000', 20, N'Samsung Galaxy Z Flip4 128GB has officially launched the technology market, marking Samsung''s return on the user-oriented path of convenience on folding phones. With increased durability and beautiful design, Flip4 becomes one of the bright spots for the second half of 2022.', N'img/product/3/samsungzflip4.jpg', 1, CAST(N'2023-01-08T21:18:34.613' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (3, N'Samsung Galaxy Z Flip4 128GB ', N'18.490.000', 20, N'Samsung Galaxy Z Flip4 128GB has officially launched the technology market, marking Samsung''s return on the user-oriented path of convenience on folding phones. With increased durability and beautiful design, Flip4 becomes one of the bright spots for the second half of 2022.', N'img/product/3/samsungzflip4.jpg', 1, CAST(N'2023-01-08T21:18:34.613' AS DateTime), CAST(N'2023-01-09T12:09:25.287' AS DateTime), 0)
 INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (4, N'Samsung Galaxy Z Fold4 256GB', N'35.490.000', 10, N'At the annual Samsung Unpacked event, the 256GB Samsung Galaxy Z Fold4 was officially launched to the technology market, bringing with it many valuable improvements that make the Galaxy Z Fold a better folding phone.', N'img/product/4/SamsungGalaxyZFold4 256GB.jpg', 1, CAST(N'2023-01-08T21:22:45.320' AS DateTime), NULL, 0)
 INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (5, N'Samsung Galaxy Z Fold3 5G 256GB', N'27.990.000', 40, N'Samsung Galaxy Z Fold3 5G, a fully upgraded phone in many aspects, especially this is the world''s first folding screen phone with a hidden camera (August 2021). The product will be a "hit" of Samsung, contributing to bringing new experiences to users.', N'img/product/5/SamsungGalaxyZFold35G256GB.jpg', 1, CAST(N'2023-01-08T21:24:13.347' AS DateTime), NULL, 0)
 SET IDENTITY_INSERT [dbo].[Product] OFF
@@ -157,4 +156,3 @@ USE [master]
 GO
 ALTER DATABASE [WebDemo] SET  READ_WRITE 
 GO
-

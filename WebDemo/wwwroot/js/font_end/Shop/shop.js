@@ -13,6 +13,7 @@ $(document).ready(function () {
         $("#pagination").show();
         getDataProducts(p, proName);
     }, 300);
+    
 });
 
 function getDataProducts(p, proName) {
@@ -91,7 +92,6 @@ function getDataCategories() {
         async: false,
         success: function (res) {
             if (res.success) {
-                console.log(res.data);
                 let data = res.data;
                 if (data != null && data != undefined) {             
                     let dataRes = [];
@@ -116,3 +116,4 @@ function getDataCategories() {
         }
     });
 }
+

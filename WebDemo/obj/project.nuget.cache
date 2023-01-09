@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hW8eGhdrlNr31WRhh2Ehl/ELksNh93F66agHi6GqqB+IhypI7rZVGgy5IJAyi8FatVodDxmiSmJzHdgTOfuhfw==",
+  "dgSpecHash": "YO34Co3d2BoqynG/d8cgOxKHoNOM0a67JmjXoA+vdH1d8G1HVS+IHpfwOmPVtfW2Uw6G26s+YoSKmAzAzMO4jw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Asus\\Downloads\\git\\git\\WebDemo\\WebDemo.csproj",
+  "projectFilePath": "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asus\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

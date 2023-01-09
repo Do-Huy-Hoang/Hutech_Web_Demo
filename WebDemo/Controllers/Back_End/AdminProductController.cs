@@ -252,7 +252,7 @@ namespace WebDemo.Controllers.Back_End
                 {
                     Success = false,
                     Check = false,
-                    Message = "Create Error",
+                    Message = "Update Error",
                 };
                 return Json(res);
             }
@@ -262,10 +262,9 @@ namespace WebDemo.Controllers.Back_End
         {
             try
             {
-                dynamic checkPro = context.Products.Where(c => c.ProName.Equals(product.ProName) && c.IsDelete == false).FirstOrDefault();
-                if (checkPro == null)
+                dynamic checkPro1 = context.Products.Where(c => c.ProName.Equals(product.ProName) && c.IsDelete == false && c.ProId != product.ProId).FirstOrDefault();
+                if (checkPro1 == null)
                 {
-                    var fromfile = Files[0];
                     DateTime date = DateTime.Now;
                     if (product == null)
                     {
@@ -295,8 +294,9 @@ namespace WebDemo.Controllers.Back_End
                             pro.ProCategory = product.ProCategory;
                         }
                         pro.UpdateAt = date;
-                        if (Files != null)
+                        if (Files.Count > 0)
                         {
+                            var fromfile = Files[0];
                             var fileName = Path.GetFileName(fromfile.FileName);
                             var path = Path.Combine(_enviroment.WebRootPath, "img/product/" + product.ProId.ToString());
                             if (!Directory.Exists(path))

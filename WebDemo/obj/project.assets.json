@@ -3489,11 +3489,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Asus\\Downloads\\git\\git\\WebDemo\\WebDemo.csproj",
+      "projectUniqueName": "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj",
       "projectName": "WebDemo",
-      "projectPath": "C:\\Users\\Asus\\Downloads\\git\\git\\WebDemo\\WebDemo.csproj",
+      "projectPath": "D:\\Hutech\\DuAn\\WebDemo\\WebDemo.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Asus\\Downloads\\git\\git\\WebDemo\\obj\\",
+      "outputPath": "D:\\Hutech\\DuAn\\WebDemo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

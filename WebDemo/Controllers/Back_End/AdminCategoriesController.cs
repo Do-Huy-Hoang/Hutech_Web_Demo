@@ -232,7 +232,7 @@ namespace WebDemo.Controllers.Back_End
         {
             try
             {
-                var checkCate = context.Categories.Where(c => c.CateName.Equals(category.CateName) && c.IsDelete == false).FirstOrDefault();
+                var checkCate = context.Categories.Where(c => c.CateName.Equals(category.CateName) && c.IsDelete == false && c.CateId != category.CateId).FirstOrDefault();
                 if (checkCate == null)
                 {
                     DateTime date = DateTime.Now;

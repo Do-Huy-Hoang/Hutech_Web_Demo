@@ -3,6 +3,9 @@ var btnDrop = document.getElementById('adminName');
 $(document).ready(function () {
     getSession();
     btnDrop.innerHTML = data.name;
+    if (window.localStorage.getItem("numberPro") != null) {
+        count = window.localStorage.getItem("numberPro");
+    }
 });
 
 function getSession() {
@@ -51,3 +54,5 @@ function logout() {
         }
     });
 }
+
+

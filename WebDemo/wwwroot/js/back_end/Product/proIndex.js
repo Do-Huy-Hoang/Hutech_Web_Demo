@@ -2,6 +2,9 @@
 var totalPage = 1;
 var list = null;
 var listCate = null;
+var listCart = null;
+var dataCart = null;
+var count = null;
 var submit = null;
 var p = 1;
 var proName = null;
@@ -25,6 +28,16 @@ $(document).ready(function () {
         $("#pagination").show();
         getDataProducts(1, proName);
     }, 300);
+    dataCart = JSON.parse(window.localStorage.getItem('list_cart'));
+    count = window.localStorage.getItem('numberPro')
+    if (dataCart != null) {
+        let dataCartRes = [];
+        for (var i = 0; i < dataCart.length; i++) {
+            let item = dataCart[i];
+            dataCartRes.push(item);
+        }
+        listCart = dataCartRes;
+    }
 });
 
 function search() {
@@ -80,7 +93,6 @@ function getDataProducts(p, proName) {
     });
 }
 
-
 function per() {
     var curPage = parseInt($("#curPage").text());
     p = curPage - 1;
@@ -118,7 +130,6 @@ function showInfo(id) {
         let item = $.grep(list, function (obj) {
             return obj.proId == id
         })[0];
-        console.log(item);
         $("#txtName").val(item.proName);
         $("#txtId").val(item.proId);
         $("#txtPrice").val(item.proPrice);
@@ -222,9 +233,20 @@ function update(formData) {
         success: function (res) {
             if (res.success) {
                 toastr.success("", res.message);
+                if (listCart != null) {
+                    for (let i = 0; i < listCart.length; i++) {
+                        if (listCart[i].product.proId == formData.get("proId")) {
+                            listCart.splice(i, 1);
+                            count = count - 1;
+                        }
+                    }
+                    window.localStorage.setItem('list_cart', JSON.stringify(listCart));
+                    window.localStorage.setItem('numberPro', count)
+                }
                 setTimeout(function () {
                     window.location.href = "/AdminProduct";
-                }, 1000)
+                }, 1000);
+               
             } else {
                 if (res.check) {
                     pName.innerHTML = icon + res.message;
@@ -260,7 +282,6 @@ function deleteAt(id) {
                     toastr.error("", res.message);
                     getDataProducts(p);
                 }
-                console.log(res.success)
             },
             failure: function (res) {
                 alert(res.message);
@@ -279,7 +300,6 @@ function getDataCategories() {
         async: false,
         success: function (res) {
             if (res.success) {
-                console.log(res.data);
                 let data = res.data;
                 if (data != null && data != undefined) {
 
