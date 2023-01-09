@@ -1,0 +1,180 @@
+﻿@{
+    ViewData["Title"] = "User Manager";
+    ViewData["css"] = "<link rel='stylesheet' href='~/lib/teamplate_back_end/datatables.net-bs/css/dataTables.bootstrap.min.css'>";
+    ViewData["js"] = "/js/back_end/SetUser/Index.js";
+}
+
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Users</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Set User</li>
+                        <li class="breadcrumb-item active">Categories</li>
+                        <li class="breadcrumb-item active">Order</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="col-sm-12 row">
+                            <div class="card-header col-sm-9 col-md-10">
+                                <div class="input-group col-sm-10 float-sm-right">
+                                    <input type="text" class="form-control" name="userName" placeholder="Search user">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" onclick="search()">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr class="col-sm-14">
+                                        <th class="col-sm-1">User Id</th>
+                                        <th class="col-sm-2">User name</th>
+                                        <th class="col-sm-2">Email</th>
+                                        <th class="col-sm-2">Phone</th>
+                                        <th class="col-sm-2">Address</th>
+                                        <th class="col-sm-2">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyResult">
+                                </tbody>
+                            </table>
+                            <div id="pagination" style="padding-top: 10px">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end">
+                                        <li class="page-item">
+                                            <a class="page-link" href="javascript:void(0);" onclick="per()" id="Previous">Previous</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="javascript:void(0);">
+                                                <span id="curPage">1</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="javascript:void(0);" onclick="next()" id="Next">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div id="Spinner">
+                            <div class="d-flex justify-content-center">
+                                <div class="spinner-border" role="status"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script id="courseTemplate" type="text/x-jquery-tmpl">
+     <tr>
+      <td>${userId}</td>
+      <td>${userName}</td>
+      <td>${userEmail}</td>
+      <td>${userPhoneNumber}</td>
+      <td>${userAddress}</td>
+      <td>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg" onclick="showInfoUser(${userId})">
+              Edit
+          </button>
+          <button type="button" class="btn btn-danger" data-toggle="modal" onclick="deleteOrder(${ordId})" data-target="#modal-sm">
+              Delete
+          </button>
+      </td>
+    </tr>
+</script>
+
+<div class="modal fade" id="modal-lg">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">User Detail</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <div class="mb-3 row">
+                            <label for="txtuserID" class="col-sm-2 col-form-label">UserID</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control" id="txtuserID" value="">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtuserName" class="col-sm-2 col-form-label">UserName</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control" id="txtuserName">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtuserEmail" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control" id="txtuserEmail">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtuserPhone" class="col-sm-2 col-form-label">Phone number</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control" id="txtuserPhone">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtuserAddress" class="col-sm-2 col-form-label">Address</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly class="form-control" id="txtuserAddress">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="txtsetAd" class="col-sm-2 col-form-label">isAdmin</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtsetAd">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnClose" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="btnChange" type="button" class="btn btn-primary" data-dismiss="modal" onclick="save();">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-sm">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this category?</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
