@@ -4,6 +4,7 @@ var list = null;
 var submit = null;
 var p = 1;
 var userName = null;
+var selectIsAdmin = document.getElementById("selectIsAdmin");
 $(document).ready(function () {
     $("#pagination").hide();
     $("#Previous").hide();
@@ -106,7 +107,7 @@ function showInfoUser(id) {
         $("#txtuserEmail").val(itm.userEmail)
         $("#txtuserPhone").val(itm.userPhoneNumber);
         $("#txtuserAddress").val(itm.userAddress);
-        $("#txtsetAd").val(itm.isAdmin);
+        selectIsAdmin.value = itm.isAdmin;
     }
 }
 
@@ -118,7 +119,7 @@ function save() {
             userEmail: $("#txtuserEmail").val(),
             userPhoneNumber: $("#txtuserPhone").val(),
             userAddress: $("#txtuserAddress").val(),
-            isAdmin: $("#txtsetAd").val(),
+            isAdmin: selectIsAdmin.value,
         };
         $.ajax({
             type: "POST",

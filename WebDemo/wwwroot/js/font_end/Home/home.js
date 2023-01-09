@@ -49,6 +49,10 @@ function goHome() {
     sessionStorage.removeItem("Page");
 }
 
+function goUser() {
+    sessionStorage.setItem("Page", "#infomation");
+}
+
 function goPageLogin() {
     sessionStorage.setItem("Page", "#hLogin");
 }

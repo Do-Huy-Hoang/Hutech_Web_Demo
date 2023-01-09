@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/8xLOJuJIADQTxDIMd9aQHSW9EXB5EiKBbeCq9kpRFw=",
+  "Hash": "5IATtibphpkXVwTZueOpeygTxxhM0pVvNquYCXW4eWc=",
   "Source": "WebDemo",
   "BasePath": "_content/WebDemo",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\font_end\\login.css"
+    },
+    {
+      "Identity": "D:\\Hutech\\DuAn\\WebDemo\\wwwroot\\css\\font_end\\user.css",
+      "SourceId": "WebDemo",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Hutech\\DuAn\\WebDemo\\wwwroot\\",
+      "BasePath": "_content/WebDemo",
+      "RelativePath": "css/font_end/user.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\font_end\\user.css"
     },
     {
       "Identity": "D:\\Hutech\\DuAn\\WebDemo\\wwwroot\\favicon.ico",
@@ -442,6 +459,23 @@
       "OriginalItemSpec": "wwwroot\\js\\back_end\\Product\\proIndex.js"
     },
     {
+      "Identity": "D:\\Hutech\\DuAn\\WebDemo\\wwwroot\\js\\back_end\\SetUser\\Index.js",
+      "SourceId": "WebDemo",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Hutech\\DuAn\\WebDemo\\wwwroot\\",
+      "BasePath": "_content/WebDemo",
+      "RelativePath": "js/back_end/SetUser/Index.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\back_end\\SetUser\\Index.js"
+    },
+    {
       "Identity": "D:\\Hutech\\DuAn\\WebDemo\\wwwroot\\js\\font_end\\Cart\\cart.js",
       "SourceId": "WebDemo",
       "SourceType": "Discovered",
@@ -542,6 +576,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\font_end\\Shop\\shop.js"
+    },
+    {
+      "Identity": "D:\\Hutech\\DuAn\\WebDemo\\wwwroot\\js\\font_end\\User\\profile.js",
+      "SourceId": "WebDemo",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Hutech\\DuAn\\WebDemo\\wwwroot\\",
+      "BasePath": "_content/WebDemo",
+      "RelativePath": "js/font_end/User/profile.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\font_end\\User\\profile.js"
     },
     {
       "Identity": "D:\\Hutech\\DuAn\\WebDemo\\wwwroot\\js\\jquery.tmpl.js",

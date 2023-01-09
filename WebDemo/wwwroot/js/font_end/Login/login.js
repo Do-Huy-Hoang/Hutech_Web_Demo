@@ -53,6 +53,7 @@ function login(userName, password) {
         async: false,
         success: function (res) {
             if (res.success) {
+                sessionStorage.removeItem("Page");
                 window.location.href = "/";
             }
             else {

@@ -16,8 +16,6 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Set User</li>
-                        <li class="breadcrumb-item active">Categories</li>
-                        <li class="breadcrumb-item active">Order</li>
                     </ol>
                 </div>
             </div>
@@ -93,9 +91,6 @@
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg" onclick="showInfoUser(${userId})">
               Edit
           </button>
-          <button type="button" class="btn btn-danger" data-toggle="modal" onclick="deleteOrder(${ordId})" data-target="#modal-sm">
-              Delete
-          </button>
       </td>
     </tr>
 </script>
@@ -145,7 +140,10 @@
                         <div class="mb-3 row">
                             <label for="txtsetAd" class="col-sm-2 col-form-label">isAdmin</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="txtsetAd">
+                                <select class="custom-select" id="selectIsAdmin">
+                                      <option value=true>Yes</option>
+                                      <option value=false>No</option>
+                                </select>
                             </div>
                         </div>
                     </div>

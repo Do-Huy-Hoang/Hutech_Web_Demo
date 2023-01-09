@@ -14,7 +14,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Order]    Script Date: 1/9/2023 2:16:52 PM ******/
+/****** Object:  Table [dbo].[Order]    Script Date: 1/9/2023 7:28:10 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -33,7 +33,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Order_detail]    Script Date: 1/9/2023 2:16:52 PM ******/
+/****** Object:  Table [dbo].[Order_detail]    Script Date: 1/9/2023 7:28:10 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -49,7 +49,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Product]    Script Date: 1/9/2023 2:16:52 PM ******/
+/****** Object:  Table [dbo].[Product]    Script Date: 1/9/2023 7:28:10 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -71,7 +71,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Product_img]    Script Date: 1/9/2023 2:16:52 PM ******/
+/****** Object:  Table [dbo].[Product_img]    Script Date: 1/9/2023 7:28:10 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -87,7 +87,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 1/9/2023 2:16:52 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 1/9/2023 7:28:10 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -112,6 +112,16 @@ SET IDENTITY_INSERT [dbo].[Category] ON
 
 INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (1, N'Samsung', CAST(N'2023-01-08T18:58:26.423' AS DateTime), CAST(N'2023-01-09T14:15:23.253' AS DateTime), 0)
 INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (2, N'Oppo', CAST(N'2023-01-08T18:59:09.393' AS DateTime), NULL, 0)
+INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (3, N'Apple', CAST(N'2023-01-09T18:39:26.660' AS DateTime), NULL, 0)
+INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (4, N'Xiaomi', CAST(N'2023-01-09T18:46:24.200' AS DateTime), NULL, 0)
+INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (5, N'Vivo', CAST(N'2023-01-09T18:52:50.117' AS DateTime), NULL, 0)
+INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (6, N'Realme', CAST(N'2023-01-09T18:54:42.500' AS DateTime), CAST(N'2023-01-09T19:10:56.093' AS DateTime), 0)
+INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (7, N'Nokia', CAST(N'2023-01-09T18:57:05.800' AS DateTime), NULL, 0)
+INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (8, N'TCL', CAST(N'2023-01-09T18:58:41.030' AS DateTime), NULL, 0)
+INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (10, N'Asus', CAST(N'2023-01-09T19:17:09.547' AS DateTime), NULL, 0)
+INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (11, N'Hp', CAST(N'2023-01-09T19:18:55.017' AS DateTime), NULL, 0)
+INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (12, N'Lenovo', CAST(N'2023-01-09T19:21:01.057' AS DateTime), NULL, 0)
+INSERT [dbo].[Category] ([cate_id], [cate_name], [createAt], [updateAt], [isDelete]) VALUES (13, N'Acer', CAST(N'2023-01-09T19:22:36.220' AS DateTime), NULL, 0)
 SET IDENTITY_INSERT [dbo].[Category] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Product] ON 
@@ -120,11 +130,33 @@ INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_
 INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (3, N'Samsung Galaxy Z Flip4 128GB ', N'18.490.000', 20, N'Samsung Galaxy Z Flip4 128GB has officially launched the technology market, marking Samsung''s return on the user-oriented path of convenience on folding phones. With increased durability and beautiful design, Flip4 becomes one of the bright spots for the second half of 2022.', N'img/product/3/samsungzflip4.jpg', 1, CAST(N'2023-01-08T21:18:34.613' AS DateTime), CAST(N'2023-01-09T12:09:25.287' AS DateTime), 0)
 INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (4, N'Samsung Galaxy Z Fold4 256GB', N'35.490.000', 10, N'At the annual Samsung Unpacked event, the 256GB Samsung Galaxy Z Fold4 was officially launched to the technology market, bringing with it many valuable improvements that make the Galaxy Z Fold a better folding phone.', N'img/product/4/SamsungGalaxyZFold4 256GB.jpg', 1, CAST(N'2023-01-08T21:22:45.320' AS DateTime), NULL, 0)
 INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (5, N'Samsung Galaxy Z Fold3 5G 256GB', N'27.990.000', 40, N'Samsung Galaxy Z Fold3 5G, a fully upgraded phone in many aspects, especially this is the world''s first folding screen phone with a hidden camera (August 2021). The product will be a "hit" of Samsung, contributing to bringing new experiences to users.', N'img/product/5/SamsungGalaxyZFold35G256GB.jpg', 1, CAST(N'2023-01-08T21:24:13.347' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (6, N'Oppo A5 2020', N'6.000.000', 500, N'OPPO A5 2020 (A5) fits five separate cameras into a single smartphone. A 12MP rear main lens for maximum photo resolution. An Ultra Wide 119° rear lens for panoramic pictures. Two rear lenses that provide artistic portrait effects. And a 8MP front lens featuring AI Beautification.', N'img/product/6/oppoA52020.jpg', 2, CAST(N'2023-01-09T16:01:07.973' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (8, N'iPhone 14 Plus', N'24.990.000', 100, N'After many generations of Apple phones, the name "Plus" has also officially returned in 2022 and appeared on the iPhone 14 Plus 128GB, featuring a trend-setting appearance and a screen so large. cannot be seen. Better display time and strong configuration unchanged compared to the standard version.', N'Img/product/8/iphone14plus.jpg', 3, CAST(N'2023-01-09T18:44:08.873' AS DateTime), CAST(N'2023-01-09T18:45:37.323' AS DateTime), 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (9, N'Xiaomi Redmi 9A', N'1.990.000', 100, N'Xiaomi Redmi 9A - a smartphone from Xiaomi aimed at a group of customers who are looking for a product with good configuration at an affordable price, as well as fully equipped with impressive features.', N'img/product/9/xiaomiredmi9A.jpg', 4, CAST(N'2023-01-09T18:47:51.900' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (10, N'Samsung Galaxy S20 FE', N'9.490.000', 100, N'Samsung has introduced to users a new member of the S20 Series, which is the Samsung Galaxy S20 FE phone. This is a high-end flagship model that brings together many of the features Samfan loves, promising to bring the premium experience of the Galaxy S series at a more accessible price point.', N'img/product/10/samsungGLXS20FE.jpg', 1, CAST(N'2023-01-09T18:50:38.297' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (11, N'Vivo Y15s', N'2.890.000', 100, N'Vivo has just brought a new warrior to the cheap mid-range segment called Vivo Y15s, a product that possesses many advantages such as beautiful design, large screen, dual cameras, extremely strong battery and many more interesting things. Others are waiting for you.', N'img/product/11/Vivo Y15.jpg', 5, CAST(N'2023-01-09T18:54:07.680' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (12, N'Realme 8 Pro', N'8.690.000', 100, N'Besides Realme 8, Realme 8 Pro was also introduced to users with the main highlight being the appearance of a super sharp 108 MP camera with 50 W SuperDart charging technology and comes with an ideal mid-range price.', N'img/product/12/Realmi 8 pro.jpg', 6, CAST(N'2023-01-09T18:56:14.673' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (13, N'Nokia G21', N'3.890.000', 100, N'Nokia G21 is the next generation of G series manufactured by Nokia with outstanding improvements such as large screen size, stable performance, providing a smooth experience on daily tasks and long usage time. thanks to the huge battery built into the phone.', N'img/product/13/NokiaG21.jpg', 7, CAST(N'2023-01-09T18:57:33.713' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (14, N'TCL plus', N'4.490.000', 100, N'TCL 30+ is a fairly new name in the mobile phone market, owning a not too high price but equipped with many impressive specifications. Prominent among them can be mentioned as the 50 MP camera and the gaming chip of the MediaTek family.', N'img/product/14/TCLplus.jpg', 8, CAST(N'2023-01-09T18:59:16.023' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (15, N'iPhone 13', N'19.990.000', 100, N'While the attraction from the set of 4 versions of iPhone 12 has not cooled down, Apple has brought users a new super product iPhone 13 with many interesting improvements that will bring the most attractive experiences to customers. user.', N'img/product/15/iphone13.jpg', 3, CAST(N'2023-01-09T19:00:50.313' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (16, N'Samsung Galaxy A33 5G ', N'7.290.000', 100, N'Samsung Galaxy A33 5G 6GB launched on March 17, is considered a fairly large update compared to its predecessor Galaxy A32 in terms of design to internal specifications, in order to bring a beautiful appearance as well as a competitive edge. compete directly in performance with competitors in the same price segment.', N'img/product/16/samsung A33 5g.jpg', 1, CAST(N'2023-01-09T19:04:03.183' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (17, N'OPPO Reno8 Pro 5G', N'17.990.000', 100, N'OPPO Reno8 Pro 5G is a high-end phone launched by OPPO on September 9, 2022, the device is aimed at high-end perfection in design and professional shooting capabilities thanks to its MariSilicon image processor. Dedicated X.', N'img/product/17/oppoReno8 pro.jpg', 2, CAST(N'2023-01-09T19:06:19.687' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (18, N'Vivo V25 Pro 5G ', N'13.490.000', 100, N'Vivo V25 Pro 5G has just been launched with an extremely attractive price, the strength of the device belongs to the performance part thanks to its equipped with MediaTek Dimensity 1300 chip and 64 MP sharp camera cluster, promising to bring users. stable experience during use.', N'img/product/18/VivoV25Pro.jpg', 5, CAST(N'2023-01-09T19:07:39.233' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (19, N'Xiaomi Redmi Note 11S', N'6.190.000', 100, N'The Xiaomi Redmi Note 11S phone is ready to give you the perfect experience of gaming, daily use tasks or the impression of external beauty.', N'img/product/19/xiaomiRedmiNote11s.jpg', 4, CAST(N'2023-01-09T19:09:02.280' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (20, N'Realme 10', N'7.190.000', 100, N'Realme 10 can be considered as one of the most anticipated smartphone models in the beginning of 2023 with many highlights, some notable points can be mentioned such as: Super AMOLED panel, 50 MP super resolution camera comes with powerful Helio G99 chip.', N'img/product/20/Realmi10.jpg', 6, CAST(N'2023-01-09T19:10:43.230' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (21, N'Nokia G11 Plus', N'2.690.000', 100, N'Nokia G11 Plus (3GB / 32GB) is a product in the low-cost segment that Nokia takes care of quite a lot in all aspects. The company has equipped the device with quite good lenses with a 50 MP main camera, accompanied by a large screen and large battery so you can comfortably use it for many hours.', N'img/product/21/NokiaG11Plus.jpg', 7, CAST(N'2023-01-09T19:12:14.450' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (22, N'TCL 30 SE ', N'3.690.000', 100, N'Finally, the TCL 30 SE phone was also officially in business in Vietnam market in September 2022 with an affordable price, in order to win the hearts of the majority of phone users, the company equips The device has quite a few outstanding parameters so that you can experience daily tasks better.', N'img/product/22/TLC30SE.jpg', 8, CAST(N'2023-01-09T19:13:04.903' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (23, N'MacBook Air M1 2020 16GB/256GB/7-core GPU (Z12A0004Z)', N'33.490.000', 100, N'The Apple Air M1 2020 laptop has a beautiful, luxurious design with Apple''s exclusive M1 CPU for high graphics performance, a super-sharp Retina display along with an optimal security system.', N'img/product/23/MacBook Air M1 2020.jpg', 3, CAST(N'2023-01-09T19:15:31.393' AS DateTime), CAST(N'2023-01-09T19:16:46.043' AS DateTime), 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (24, N'Laptop Asus TUF Gaming FX506LHB i5 10300H/8GB/512GB/4GB GTX1650/144Hz/Win11 (HN188W) ', N'20.990.000', 100, N'If you are looking for a gaming laptop but still own an affordable price, the Asus TUF Gaming FX506LHB i5 (HN188W) laptop will be a worthy choice with its powerful NVIDIA GeForce GTX discrete graphics card and stylish design. Solid, unique design.', N'img/product/24/10052589-laptop-asus-tuf-gaming-f15-fx506lhb-hn188w-1.jpg', 10, CAST(N'2023-01-09T19:18:20.970' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (25, N'Laptop HP 240 G8 i3 1005G1/4GB/512GB/Win11 (617K6PA)', N'10.090.000', 100, N'Ready to accompany you to school with the HP 240 G8 i3 (617K6PA) laptop with a compact design, good configuration in the price range, the ability to handle both study and work tasks, promises to be a laptop Laptop for study - office that you cannot ignore.', N'img/product/25/Hp 240 G8 i3.jpg', 11, CAST(N'2023-01-09T19:19:59.380' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (26, N'Lenovo Ideapad 3 15IAU7 i3 1215U/8GB/256GB/Win11 (82RK005LVN)', N'13.890.000', 100, N'Laptop Lenovo Ideapad 3 15IAU7 i3 (82RK005LVN) will be an effective companion for students, students or office workers with elegant, modern appearance and powerful performance from Intel Gen 12 chip. advanced.', N'img/product/26/Lenovo ieadpad3.jpg', 12, CAST(N'2023-01-09T19:22:08.037' AS DateTime), NULL, 0)
+INSERT [dbo].[Product] ([pro_id], [pro_name], [pro_price], [pro_quantity], [pro_description], [pro_img], [pro_Category], [createAt], [updateAt], [isDelete]) VALUES (27, N'Acer Nitro 5', N'28.790.000', 100, N'Beating many competitors in the same gaming laptop segment with the appearance of powerful Intel Gen 12 chip, Acer Nitro 5 Tiger AN515 58 773Y i7 (NH.QFKSV.001) laptop promises to be an effective right-hand man. for gamers to bombard on every battlefield.', N'img/product/27/AcerNitro5.jpg', 13, CAST(N'2023-01-09T19:24:17.900' AS DateTime), NULL, 0)
 SET IDENTITY_INSERT [dbo].[Product] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Users] ON 
 
 INSERT [dbo].[Users] ([user_id], [user_name], [user_password], [user_email], [user_phoneNumber], [user_address], [isAdmin], [createAt], [updateAt]) VALUES (1, N'mh9998', N'GmUOGiX5odIrzamRIUGjLdFanlfQ9qPC+UrLvoCIZAg=', N'g@gmail.com', NULL, NULL, 1, CAST(N'2023-01-08T21:02:49.717' AS DateTime), NULL)
+INSERT [dbo].[Users] ([user_id], [user_name], [user_password], [user_email], [user_phoneNumber], [user_address], [isAdmin], [createAt], [updateAt]) VALUES (2, N't', N'5qu3u+5oazH+bSYCeRin7OAXB8IvslKeH6OrcaIYPxs=', N't@gmail.com', NULL, NULL, 1, CAST(N'2023-01-09T14:27:34.130' AS DateTime), NULL)
 SET IDENTITY_INSERT [dbo].[Users] OFF
 GO
 ALTER TABLE [dbo].[Order]  WITH CHECK ADD  CONSTRAINT [fk_Order_User_ord_userId] FOREIGN KEY([ord_userId])
@@ -156,3 +188,4 @@ USE [master]
 GO
 ALTER DATABASE [WebDemo] SET  READ_WRITE 
 GO
+

@@ -37,6 +37,8 @@
   <ItemGroup>
     <None Include="Views\Back-End\Product\Add.cshtml" />
     <None Include="Views\Back-End\Product\Index.cshtml" />
+    <None Include="Views\Font-end\User\Profile.cshtml" />
+    <None Include="wwwroot\js\font_end\User\profile.js" />
   </ItemGroup>
 
 </Project>

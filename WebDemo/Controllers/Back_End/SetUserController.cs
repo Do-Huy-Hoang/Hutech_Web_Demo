@@ -8,7 +8,15 @@ namespace WebDemo.Controllers.Back_End
         WebDemoContext context = new WebDemoContext();
         public IActionResult Index()
         {
-            return View("Views/Back-end/SetUser/index.cshtml");
+
+            if (HttpContext.Session.GetString("IsAdmin") != null && (HttpContext.Session.GetString("IsAdmin").Equals("True")))
+            {
+                return View("Views/Back-end/SetUser/index.cshtml");
+            }
+            else
+            {
+                return Redirect("/404");
+            }       
         }
         [HttpGet]
         public IActionResult get_data_user(int Page, int Size, string userName)

@@ -1,0 +1,130 @@
+﻿@{
+    ViewData["Title"] = "Profile User";
+    ViewData["css"] = "/css/font_end/user.css";
+    ViewData["js"] = "/js/font_end/User/profile.js";
+}
+
+<div class="container emp-profile">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="profile-head">
+                <h5>
+                    Kshiti Ghelani
+                </h5>
+                <h6>
+                    Web Developer and Designer
+                </h6>
+                <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" id="information">
+
+                    </li>
+                    <li class="nav-item" id="edit">
+
+                    </li>
+                    <li class="nav-item" id="changePassword">
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="tab-content profile-tab">
+                <div class="tab-pane fade show" id="tabInformation">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p id="usrName"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Email</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p id="email"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Phone</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p id="usrphone"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Address</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p id="usrAddress"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade show" id="tabEdit">
+                    <div class="mb-3 row">
+                        <div class="col-sm-10">
+                            <input type="hidden" class="form-control" id="txtuserID">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="txtuserName" class="col-sm-2 col-form-label">UserName</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtuserName">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="txtuserEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtuserEmail">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="txtuserPhone" class="col-sm-2 col-form-label">Phone number</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtuserPhone">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="txtuserAddress" class="col-sm-2 col-form-label">Address</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txtuserAddress">
+                        </div>
+                    </div>
+                    <button id="btnChange" type="button" class="btn btn-primary" onclick="save()">Update</button>
+                </div>
+
+                <div class="tab-pane fade show" id="tabChangePassword">
+                    <div class="invalid-feedback text-center mess" id="messagerg"></div>
+                    <div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text ic" id="basic-addon1"><i class="fas fa-key fa-lg"></i></span>
+                            </div>
+                            <input type="password" class="form-control" name="oldPassword" placeholder="Old Password" aria-label="Password" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text ic" id="basic-addon1"><i class="fas fa-key fa-lg"></i></span>
+                            </div>
+                            <input type="password" class="form-control" name="rgPassword" placeholder="new Password" aria-label="Password" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text ic" id="basic-addon1"><i class="fas fa-key fa-lg"></i></span>
+                            </div>
+                            <input type="password" class="form-control" name="rgConfirmPassword" placeholder="Confirm Password" aria-label="Confirm Password" aria-describedby="basic-addon1">
+                        </div>
+                        <button id="btnChange" type="button" class="btn btn-primary" onclick="changPassword()">Changer Password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

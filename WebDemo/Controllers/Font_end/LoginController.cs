@@ -206,5 +206,66 @@ namespace WebDemo.Controllers.Font_end
             }
         }
         #endregion
+
+        #region change password
+        [HttpPost]
+        public IActionResult change_pass(string oldPass, string newPass)
+        {
+            var obj = changePass(oldPass, newPass);
+            return Json(obj);
+        }
+
+        private object? changePass(string oldPass, string newPAss)
+        {
+            try
+            {
+                var id = HttpContext.Session.GetInt32("UserId");
+                var data = context.Users.Where(a => a.UserId == id).FirstOrDefault();
+                if (data != null)
+                {
+                    var curPass = DecryptString(data.UserPassword, _key);
+                    if (curPass != oldPass)
+                    {
+                        return new
+                        {
+                            success = false,
+                            message = "0ld password is not correct"
+                        };
+                    }
+                    else
+                    {
+                        var hashPass = EncryptString(newPAss, _key);
+                        data.UserPassword = hashPass;
+                        context.Update(data);
+                        context.SaveChanges();
+                        HttpContext.Session.Remove("Username");
+                        HttpContext.Session.Remove("UserId");
+                        HttpContext.Session.Remove("IsAdmin");
+                        return new
+                        {
+                            success = true,
+                            Message = "Change Password Success"
+                        };
+                    }
+                }
+                else
+                {
+                    return new
+                    {
+                        success = false,
+                        Message = "Change Password Error"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new
+                {
+                    success = false,
+                    message = ex.Message
+                };
+            }
+        }
+        #endregion
     }
 }
