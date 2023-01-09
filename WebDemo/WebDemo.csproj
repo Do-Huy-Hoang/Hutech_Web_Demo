@@ -37,8 +37,6 @@
   <ItemGroup>
     <None Include="Views\Back-End\Product\Add.cshtml" />
     <None Include="Views\Back-End\Product\Index.cshtml" />
-    <None Include="Views\Back-End\SetUser\Index.cshtml" />
-    <None Include="wwwroot\js\back_end\SetUser\Index.js" />
   </ItemGroup>
 
 </Project>
