@@ -195,11 +195,12 @@ function details(id) {
     let description = document.getElementById('malDescription'); 
     let add = document.getElementById('malAdd');
     let img = document.getElementById('malImg');
+    
     if (list != null && id != null && id > 0) {
         let item = $.grep(list, function (obj) {
             return obj.proId == id
         })[0];
-        /* $("#malPrice").val(item.proPrice);*/
+        console.log(item.proImg);
         name.innerHTML = item.proName
         price.innerHTML = item.proPrice;
         description.innerHTML = item.proDescription;

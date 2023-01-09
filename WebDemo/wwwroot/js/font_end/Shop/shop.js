@@ -3,7 +3,7 @@ var totalPage = 1;
 var list = null;
 var listCate = null;
 var p = 1;
-var proName = null;
+var cateId = null;
 $(document).ready(function () {
     $("#pagination").hide();
     $("#Previous").hide();
@@ -11,16 +11,16 @@ $(document).ready(function () {
     setTimeout(function () {
         $("#Spinner").hide();
         $("#pagination").show();
-        getDataProducts(p, proName);
+        getDataProducts(p, cateId);
     }, 300);
     
 });
 
-function getDataProducts(p, proName) {
+function getDataProducts(p, cateId) {
     $.ajax({
         type: "GET",
-        url: "/AdminProduct/get_data_product",
-        data: { 'page': p, 'size': size, 'proName': proName },
+        url: "/AdminProduct/get_data_product_by_category",
+        data: { 'page': p, 'size': size, 'CateId': cateId },
         async: false,
         success: function (res) {
             if (res.success) {
@@ -100,7 +100,6 @@ function getDataCategories() {
                         dataRes.push(item);
                     }
                     listCate = dataRes;
-                    $("#tbodyResult").html("");
                     $("#courseTemplate").tmpl(listCate).appendTo("#tbodyResult");
                 }
             }
@@ -115,5 +114,17 @@ function getDataCategories() {
 
         }
     });
+}
+
+function getProByCate(id) {
+    cateId = id;
+    p = 1;
+    getDataProducts(p, cateId);
+}
+
+function getAllPro() {
+    cateId = 0;
+    p = 1;
+    getDataProducts(p, cateId);
 }
 

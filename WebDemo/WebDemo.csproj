@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\js\font_end\CheckOut\" />
     <Folder Include="wwwroot\lib\teamplate_font_end\" />
   </ItemGroup>
 

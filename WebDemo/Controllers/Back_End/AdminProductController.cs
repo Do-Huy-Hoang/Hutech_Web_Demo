@@ -43,6 +43,79 @@ namespace WebDemo.Controllers.Back_End
 
         #region get data
         [HttpGet]
+        public IActionResult get_data_product_by_category(int Page, int Size, int CateId)
+        {
+            var data = getDataByCategory(Page, Size, CateId);
+            if (data != null)
+            {
+                var res = new
+                {
+                    Success = true,
+                    Message = "",
+                    Data = data
+                };
+                return Json(res);
+            }
+            else
+            {
+                var res = new
+                {
+                    Success = false,
+                    Message = "Loi Xay Ra"
+                };
+                return Json(res);
+            }
+
+        }
+        private object getDataByCategory(int page, int size, int CateId)
+        {
+            try
+            {
+                if (CateId == 0)
+                {
+                    var ls = from c in context.Products.Where(a => a.IsDelete == false).ToList()
+                             orderby c.ProId descending
+                             select c;
+                    var offset = (page - 1) * size;
+                    var totalRecod = ls.Count();
+                    var totalPage = (totalRecod % size) == 0 ? (int)(totalRecod / size) : (int)(totalRecod / size + 1);
+                    var lst = ls.Skip(offset).Take(size).ToList();
+                    return new
+                    {
+                        Data = lst,
+                        TotalRecod = totalRecod,
+                        TotalPage = totalPage,
+                        Page = page,
+                        Size = size
+                    };
+                }
+                else
+                {
+                    var ls = from c in context.Products.Where(a => a.IsDelete == false).ToList()
+                             where c.ProCategory == CateId
+                             select c;
+                    var offset = (page - 1) * size;
+                    var totalRecod = ls.Count();
+                    var totalPage = (totalRecod % size) == 0 ? (int)(totalRecod / size) : (int)(totalRecod / size + 1);
+                    var lst = ls.Skip(offset).Take(size).ToList();
+                    return new
+                    {
+                        Data = lst,
+                        TotalRecod = totalRecod,
+                        TotalPage = totalPage,
+                        Page = page,
+                        Size = size
+                    };
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet]
         public IActionResult get_data_product(int Page, int Size, string proName)
         {
             var data = getData(Page, Size, proName);
