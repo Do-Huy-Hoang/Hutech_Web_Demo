@@ -1,153 +1,184 @@
 ﻿@{
     ViewData["Title"] = "Order";
+    ViewData["css"] = "<link rel='stylesheet' href='~/lib/teamplate_back_end/datatables.net-bs/css/dataTables.bootstrap.min.css'>";
+    ViewData["js"] = "/js/font_end/Order/OrderUser.js";
 }
-      <div class="container">
-        <!-- HERO SECTION-->
-        <section class="py-5 bg-light">
-          <div class="container">
+<div class="container">
+    <!-- HERO SECTION-->
+    <section class="py-5 bg-light">
+        <div class="container">
             <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
-              <div class="col-lg-6">
-                <h1 class="h2 text-uppercase mb-0">Checkout</h1>
-              </div>
-              <div class="col-lg-6 text-lg-end">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
-                    <li class="breadcrumb-item"><a class="text-dark" href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-dark" href="cart.html">Cart</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Checkout</li>
-                  </ol>
-                </nav>
-              </div>
+                <div class="col-lg-6">
+                    <h1 class="h2 text-uppercase mb-0">Order List</h1>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
+                            <li class="breadcrumb-item"><a class="text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Order</li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
-          </div>
-        </section>
-        <section class="py-5">
-          <!-- BILLING ADDRESS-->
-          <h2 class="h5 text-uppercase mb-4">Billing details</h2>
-          <div class="row">
-            <div class="col-lg-8">
-              <form action="#">
-                <div class="row gy-3">
-                  <div class="col-lg-6">
-                    <label class="form-label text-sm text-uppercase" for="firstName">First name </label>
-                    <input class="form-control form-control-lg" type="text" id="firstName" placeholder="Enter your first name">
-                  </div>
-                  <div class="col-lg-6">
-                    <label class="form-label text-sm text-uppercase" for="lastName">Last name </label>
-                    <input class="form-control form-control-lg" type="text" id="lastName" placeholder="Enter your last name">
-                  </div>
-                  <div class="col-lg-6">
-                    <label class="form-label text-sm text-uppercase" for="email">Email address </label>
-                    <input class="form-control form-control-lg" type="email" id="email" placeholder="e.g. Jason@example.com">
-                  </div>
-                  <div class="col-lg-6">
-                    <label class="form-label text-sm text-uppercase" for="phone">Phone number </label>
-                    <input class="form-control form-control-lg" type="tel" id="phone" placeholder="e.g. +02 245354745">
-                  </div>
-                  <div class="col-lg-6">
-                    <label class="form-label text-sm text-uppercase" for="company">Company name (optional) </label>
-                    <input class="form-control form-control-lg" type="text" id="company" placeholder="Your company name">
-                  </div>
-                  <div class="col-lg-6 form-group">
-                    <label class="form-label text-sm text-uppercase" for="country">Country</label>
-                    <select class="country" id="country" data-customclass="form-control form-control-lg rounded-0">
-                      <option value="0">Choose your country</option>
-                    </select>
-                  </div>
-                  <div class="col-lg-12">
-                    <label class="form-label text-sm text-uppercase" for="address">Address line 1 </label>
-                    <input class="form-control form-control-lg" type="text" id="address" placeholder="House number and street name">
-                  </div>
-                  <div class="col-lg-12">
-                    <label class="form-label text-sm text-uppercase" for="addressalt">Address line 2 </label>
-                    <input class="form-control form-control-lg" type="text" id="addressalt" placeholder="Apartment, Suite, Unit, etc (optional)">
-                  </div>
-                  <div class="col-lg-6">
-                    <label class="form-label text-sm text-uppercase" for="city">Town/City </label>
-                    <input class="form-control form-control-lg" type="text" id="city">
-                  </div>
-                  <div class="col-lg-6">
-                    <label class="form-label text-sm text-uppercase" for="state">State/County </label>
-                    <input class="form-control form-control-lg" type="text" id="state">
-                  </div>
-                  <div class="col-lg-6">
-                    <button class="btn btn-link text-dark p-0 shadow-0" type="button" data-bs-toggle="collapse" data-bs-target="#alternateAddress">
-                      <div class="form-check">
-                        <input class="form-check-input" id="alternateAddressCheckbox" type="checkbox">
-                        <label class="form-check-label" for="alternateAddressCheckbox">Alternate billing address</label>
-                      </div>
-                    </button>
-                  </div>
-                  <div class="collapse" id="alternateAddress">
-                    <div class="row gy-3">
-                      <div class="col-12 mt-4">
-                        <h2 class="h4 text-uppercase mb-4">Alternative billing details</h2>
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="firstName2">First name </label>
-                        <input class="form-control form-control-lg" type="text" id="firstName2" placeholder="Enter your first name">
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="lastName2">Last name </label>
-                        <input class="form-control form-control-lg" type="text" id="lastName2" placeholder="Enter your last name">
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="email2">Email address </label>
-                        <input class="form-control form-control-lg" type="email" id="email2" placeholder="e.g. Jason@example.com">
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="phone2">Phone number </label>
-                        <input class="form-control form-control-lg" type="tel" id="phone2" placeholder="e.g. +02 245354745">
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="company2">Company name (optional) </label>
-                        <input class="form-control form-control-lg" type="text" id="company2" placeholder="Your company name">
-                      </div>
-                      <div class="col-lg-6 form-group">
-                        <label class="form-label text-sm text-uppercase" for="countryAlt">Country</label>
-                        <select class="country" id="countryAlt" data-customclass="form-control form-control-lg rounded-0">
-                          <option  value="0">Choose your country</option>
-                        </select>
-                      </div>
-                      <div class="col-lg-12">
-                        <label class="form-label text-sm text-uppercase" for="address2">Address line 1 </label>
-                        <input class="form-control form-control-lg" type="text" id="address2" placeholder="House number and street name">
-                      </div>
-                      <div class="col-lg-12">
-                        <label class="form-label text-sm text-uppercase" for="addressalt2">Address line 2 </label>
-                        <input class="form-control form-control-lg" type="text" id="addressalt2" placeholder="Apartment, Suite, Unit, etc (optional)">
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="city2">Town/City </label>
-                        <input class="form-control form-control-lg" type="text" id="city2">
-                      </div>
-                      <div class="col-lg-6">
-                        <label class="form-label text-sm text-uppercase" for="state2">State/County </label>
-                        <input class="form-control form-control-lg" type="text" id="state2">
-                      </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table align-middle mb-0 bg-white">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Unit Price</th>
+                                        <th>Quality</th>
+                                        <th>Product Category Name</th>
+                                        <th>Price</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="OrdUserResult">
+                                </tbody>
+                            </table>
+                            <div id="pagination" style="padding-top: 10px">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end">
+                                        <li class="page-item">
+                                            <a class="page-link" href="javascript:void(0);" onclick="per()" id="Previous">Previous</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="javascript:void(0);">
+                                                <span id="curPage">1</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="javascript:void(0);" onclick="next()" id="Next">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div id="Spinner">
+                            <div class="d-flex justify-content-center">
+                                <div class="spinner-border" role="status"></div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-lg-12 form-group">
-                    <button class="btn btn-dark" type="submit">Place order</button>
-                  </div>
                 </div>
-              </form>
             </div>
-            <!-- ORDER SUMMARY-->
-            <div class="col-lg-4">
-              <div class="card border-0 rounded-0 p-lg-4 bg-light">
-                <div class="card-body">
-                  <h5 class="text-uppercase mb-4">Your order</h5>
-                  <ul class="list-unstyled mb-0">
-                    <li class="d-flex align-items-center justify-content-between"><strong class="small fw-bold">Red digital smartwatch</strong><span class="text-muted small">$250</span></li>
-                    <li class="border-bottom my-2"></li>
-                    <li class="d-flex align-items-center justify-content-between"><strong class="small fw-bold">Gray Nike running shoes</strong><span class="text-muted small">$351</span></li>
-                    <li class="border-bottom my-2"></li>
-                    <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small fw-bold">Total</strong><span>$601</span></li>
-                  </ul>
+        </div>
+    </section>
+</div>
+
+
+
+<script id="ordUserTemplate" type="text/x-jquery-tmpl">
+     <tr>
+         <td>${orderDetails[0].ordDetailProductNavigation.proName}</td>
+         <td>${orderDetails[0].ordDetailProductNavigation.proPrice} VND</td>
+         <td>${orderDetails[0].ordDetailQuantity}</td>
+         <td>${orderDetails[0].ordDetailProductNavigation.proCategoryNavigation.cateName}</td>
+         <td>${parseFloat(orderDetails[0].ordDetailProductNavigation.proPrice) * orderDetails[0].ordDetailQuantity}0.000 VND</td>
+
+         <td>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-lg" onclick="showInfoOrderUser(${ordId});">
+                Details
+            </button>
+      </td>
+    </tr>
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-lg">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="text-muted mb-0">
+                    Thanks for your Order,
+                    <output typeof="text" class="text-muted mb-0" id="txtUserName"></output>!
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <p class="lead fw-normal mb-0" style="color: #a8729a;">Receipt</p>
                 </div>
-              </div>
+                <div class="card shadow-0 border mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img class="img-thumbnail" src="${proImg}">
+                            </div>
+                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                <output typeof="text" class="text-muted mb-0 small" id="txtProductName"></output>
+                            </div>
+                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                <p p class="text-muted mb-0 small">Qty: <output typeof="text" class="text-muted mb-0 small" id="txtQuality"> </output> </p>
+
+                            </div>
+                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                <output typeof="text" class="text-muted mb-0 small" id="txtProductPrice"></output>
+                            </div>
+                        </div>
+                        <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+                        <div class="row d-flex align-items-center">
+                            <div class="col-md-2">
+                                <p class="text-muted mb-0 small">Track Order</p>
+                            </div>
+                            <div class="col-md-10">
+                                <div id="disabledRange" class="progress" style="height: 6px; border-radius: 16px;">
+                                    <div class="progress-bar" role="progressbar"
+                                         style="width: 100%; border-radius: 16px; background-color: #a8729a;" id="status" aria-valuenow="50"
+                                         aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-around mb-1">
+                                    <p class="text-muted mt-1 mb-0 small ms-xl-5">Out for delivary</p>
+                                    <p class="text-muted mt-1 mb-0 small ms-xl-5">Delivered</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between pt-2">
+                    <p class="fw-bold mb-0">Order Details</p>
+                    <p class="text-muted mb-0">
+                        <span class="fw-bold me-4">
+                            Total
+                        </span>
+                        <output typeof="text" class="text-muted mb-0" id="txtTotal"></output>
+                    </p>
+                </div>
+
+                <div class="d-flex justify-content-between pt-2">
+                    <p class="text-muted mb-0">
+                        <span class="fw-bold me-4">
+                            Phone:
+                        </span>
+                        <output typeof="text" class="text-muted mb-0" id="txtPhone"></output>
+                    </p>
+                    <p class="text-muted mb-0">
+                        <span class="fw-bold me-4">
+                            Delivery Charges
+                        </span>
+                        Free
+                    </p>
+                </div>
+                <div class="d-flex justify-content-between pt-2">
+                    <p class="text-muted mb-0">
+                        <span class="fw-bold me-4">
+                            Address:
+                        </span>
+                        <output typeof="text" class="text-muted mb-0" id="txtAddress"></output>
+                    </p>
+                </div>
             </div>
-          </div>
-        </section>
-      </div>
+            <div class="card-footer border-0 px-4 py-5"
+                 style="background-color: #a8729a; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                <p class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
+                    TOTAL PAID: <output typeof="text" class="d-flex align-items-center justify-content-end text-white" id="txtTotalPaid"></output>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

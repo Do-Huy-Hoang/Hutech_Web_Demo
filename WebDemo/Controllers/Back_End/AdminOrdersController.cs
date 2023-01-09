@@ -11,7 +11,14 @@ namespace WebDemo.Controllers.Back_End
         WebDemoContext context = new WebDemoContext();
         public IActionResult Index()
         {
-            return View("Views/Back-end/Order/index.cshtml");
+            if (HttpContext.Session.GetString("IsAdmin") != null && (HttpContext.Session.GetString("IsAdmin").Equals("True")))
+            {
+                return View("Views/Back-end/Order/index.cshtml");
+            }
+            else
+            {
+                return Redirect("/404");
+            }            
         }
 
         [HttpGet]
